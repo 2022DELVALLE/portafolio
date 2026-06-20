@@ -12,7 +12,7 @@ import {
 import { faLinkedin, faGithub } from '@fortawesome/free-brands-svg-icons';
 
 // 2. Importación de foto de perfil
-import miFoto from './fotoperfil.png';
+import miFoto from '../../assets/images/fotoperfil.png';
 
 const Hero = () => {
     return (

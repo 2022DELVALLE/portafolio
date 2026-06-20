@@ -1,0 +1,716 @@
+
+<style>
+  :root {
+    --gap: 20px;
+    --card-radius: 12px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: var(--font-sans, sans-serif); }
+
+  .pb-header {
+    border-bottom: 0.5px solid var(--color-border-tertiary);
+    padding: 24px 0 20px;
+    margin-bottom: 24px;
+  }
+  .pb-badge {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    border-radius: 6px;
+    background: var(--color-background-info);
+    color: var(--color-text-info);
+    margin-bottom: 10px;
+  }
+  .pb-title {
+    font-size: 22px;
+    font-weight: 500;
+    color: var(--color-text-primary);
+    line-height: 1.3;
+    margin-bottom: 6px;
+  }
+  .pb-sub {
+    font-size: 13px;
+    color: var(--color-text-secondary);
+  }
+
+  /* Navigation tabs */
+  .tabs {
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+    border-bottom: 0.5px solid var(--color-border-tertiary);
+    margin-bottom: 24px;
+    padding-bottom: 0;
+  }
+  .tab-btn {
+    font-size: 13px;
+    font-weight: 400;
+    padding: 8px 14px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    color: var(--color-text-secondary);
+    border-bottom: 2px solid transparent;
+    margin-bottom: -0.5px;
+    border-radius: 0;
+    transition: color 0.15s, border-color 0.15s;
+    white-space: nowrap;
+  }
+  .tab-btn:hover { color: var(--color-text-primary); }
+  .tab-btn.active {
+    color: var(--color-text-primary);
+    border-bottom-color: var(--color-text-primary);
+    font-weight: 500;
+  }
+  .tab-panel { display: none; }
+  .tab-panel.active { display: block; }
+
+  /* Section */
+  .section-title {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--color-text-primary);
+    margin-bottom: 4px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .section-intro {
+    font-size: 13px;
+    color: var(--color-text-secondary);
+    margin-bottom: 16px;
+    line-height: 1.6;
+  }
+
+  /* Cards */
+  .card {
+    background: var(--color-background-primary);
+    border: 0.5px solid var(--color-border-tertiary);
+    border-radius: var(--card-radius);
+    padding: 16px 18px;
+    margin-bottom: 14px;
+  }
+  .card-title {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--color-text-primary);
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+  }
+  .card-body {
+    font-size: 13px;
+    color: var(--color-text-secondary);
+    line-height: 1.65;
+  }
+
+  /* Metric cards */
+  .metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 10px;
+    margin-bottom: 18px;
+  }
+  .metric-card {
+    background: var(--color-background-secondary);
+    border-radius: 8px;
+    padding: 14px 12px;
+  }
+  .metric-label {
+    font-size: 11px;
+    color: var(--color-text-tertiary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 5px;
+  }
+  .metric-value {
+    font-size: 22px;
+    font-weight: 500;
+    color: var(--color-text-primary);
+    line-height: 1;
+  }
+  .metric-note {
+    font-size: 11px;
+    color: var(--color-text-tertiary);
+    margin-top: 4px;
+  }
+
+  /* Table */
+  .data-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+    margin-bottom: 14px;
+  }
+  .data-table th {
+    text-align: left;
+    font-weight: 500;
+    color: var(--color-text-secondary);
+    padding: 7px 10px;
+    border-bottom: 0.5px solid var(--color-border-tertiary);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+  .data-table td {
+    padding: 8px 10px;
+    color: var(--color-text-primary);
+    border-bottom: 0.5px solid var(--color-border-tertiary);
+    vertical-align: top;
+  }
+  .data-table tr:last-child td { border-bottom: none; }
+  .data-table tr:hover td { background: var(--color-background-secondary); }
+
+  /* Tags / badges */
+  .badge {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 500;
+    padding: 2px 8px;
+    border-radius: 4px;
+    margin-left: 4px;
+    vertical-align: middle;
+  }
+  .badge-success { background: var(--color-background-success); color: var(--color-text-success); }
+  .badge-warning { background: var(--color-background-warning); color: var(--color-text-warning); }
+  .badge-info { background: var(--color-background-info); color: var(--color-text-info); }
+  .badge-danger { background: var(--color-background-danger); color: var(--color-text-danger); }
+
+  /* Step list */
+  .step-list { list-style: none; margin-bottom: 14px; }
+  .step-item {
+    display: flex;
+    gap: 12px;
+    padding: 10px 0;
+    border-bottom: 0.5px solid var(--color-border-tertiary);
+    align-items: flex-start;
+  }
+  .step-item:last-child { border-bottom: none; }
+  .step-num {
+    min-width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: var(--color-background-info);
+    color: var(--color-text-info);
+    font-size: 12px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .step-content { flex: 1; }
+  .step-title { font-size: 13px; font-weight: 500; color: var(--color-text-primary); margin-bottom: 3px; }
+  .step-desc { font-size: 12px; color: var(--color-text-secondary); line-height: 1.6; }
+
+  /* Highlight box */
+  .highlight {
+    background: var(--color-background-warning);
+    border-left: 3px solid var(--color-text-warning);
+    border-radius: 0 8px 8px 0;
+    padding: 12px 14px;
+    margin-bottom: 14px;
+    font-size: 13px;
+    color: var(--color-text-primary);
+    line-height: 1.6;
+  }
+  .highlight strong { font-weight: 500; }
+
+  .highlight-info {
+    background: var(--color-background-info);
+    border-left: 3px solid var(--color-text-info);
+    border-radius: 0 8px 8px 0;
+    padding: 12px 14px;
+    margin-bottom: 14px;
+    font-size: 13px;
+    color: var(--color-text-primary);
+    line-height: 1.6;
+  }
+
+  .highlight-danger {
+    background: var(--color-background-danger);
+    border-left: 3px solid var(--color-text-danger);
+    border-radius: 0 8px 8px 0;
+    padding: 12px 14px;
+    margin-bottom: 14px;
+    font-size: 13px;
+    color: var(--color-text-primary);
+    line-height: 1.6;
+  }
+
+  /* Two-col grid */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 14px;
+  }
+  @media (max-width: 560px) { .two-col { grid-template-columns: 1fr; } }
+
+  /* Tier reward row */
+  .tier-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 11px 14px;
+    border-radius: 8px;
+    border: 0.5px solid var(--color-border-tertiary);
+    margin-bottom: 8px;
+    background: var(--color-background-primary);
+  }
+  .tier-icon {
+    font-size: 18px;
+    min-width: 28px;
+    text-align: center;
+  }
+  .tier-label { font-size: 13px; font-weight: 500; color: var(--color-text-primary); }
+  .tier-detail { font-size: 12px; color: var(--color-text-secondary); }
+  .tier-reward {
+    margin-left: auto;
+    font-size: 13px;
+    font-weight: 500;
+    white-space: nowrap;
+  }
+
+  /* Progress bar */
+  .progress-bar-wrap { background: var(--color-background-secondary); border-radius: 4px; height: 6px; margin: 6px 0 2px; overflow: hidden; }
+  .progress-bar-fill { height: 100%; border-radius: 4px; background: var(--color-text-info); }
+
+  /* Divider */
+  .divider { border: none; border-top: 0.5px solid var(--color-border-tertiary); margin: 20px 0; }
+
+  /* Inline formula */
+  .formula-box {
+    background: var(--color-background-secondary);
+    border-radius: 8px;
+    padding: 14px 16px;
+    font-size: 13px;
+    color: var(--color-text-primary);
+    margin-bottom: 12px;
+    font-family: var(--font-mono, monospace);
+    line-height: 1.7;
+  }
+  .formula-box span { color: var(--color-text-secondary); font-family: var(--font-sans, sans-serif); }
+
+  /* CTA button */
+  .cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 8px 16px;
+    border: 0.5px solid var(--color-border-secondary);
+    border-radius: 8px;
+    cursor: pointer;
+    background: transparent;
+    color: var(--color-text-primary);
+    margin-top: 8px;
+    transition: background 0.15s;
+  }
+  .cta-btn:hover { background: var(--color-background-secondary); }
+
+  .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; }
+</style>
+
+<h2 class="sr-only">Playbook Interno de Perfumerías — Sistema de Optimización de Ingresos por Kenyo</h2>
+
+<div class="pb-header">
+  <div class="pb-badge">Documento Ejecutivo — Uso Interno</div>
+  <div class="pb-title">Playbook Integral: Arquitectura de Ingresos para Perfumerías</div>
+  <div class="pb-sub">Estratega: Kenyo &nbsp;·&nbsp; Mercado objetivo: Tarma, Perú &nbsp;·&nbsp; Versión 2.0 — Modelo Completo</div>
+</div>
+
+<div class="tabs">
+  <button class="tab-btn active" onclick="showTab('flujo')"><i class="ti ti-cash" aria-hidden="true"></i> Flujo de caja</button>
+  <button class="tab-btn" onclick="showTab('psico')"><i class="ti ti-brain" aria-hidden="true"></i> Psicología</button>
+  <button class="tab-btn" onclick="showTab('mgm')"><i class="ti ti-users" aria-hidden="true"></i> Sistema MGM</button>
+  <button class="tab-btn" onclick="showTab('finanzas')"><i class="ti ti-chart-bar" aria-hidden="true"></i> Finanzas</button>
+  <button class="tab-btn" onclick="showTab('legal')"><i class="ti ti-shield" aria-hidden="true"></i> Legal</button>
+  <button class="tab-btn" onclick="showTab('operacion')"><i class="ti ti-settings" aria-hidden="true"></i> Operación</button>
+  <button class="tab-btn" onclick="showTab('auditoria')"><i class="ti ti-clipboard-check" aria-hidden="true"></i> Auditoría</button>
+</div>
+
+<!-- ====== TAB 1: FLUJO DE CAJA ====== -->
+<div id="tab-flujo" class="tab-panel active">
+  <p class="section-intro">El objetivo central es transformar el modelo de venta de botella completa (transacción única, alta fricción) en un sistema de micro-ingresos recurrentes, alta frecuencia y conversión diferida. Cada metro cuadrado y cada botella abierta es un activo que genera caja.</p>
+
+  <div class="metrics-grid">
+    <div class="metric-card">
+      <div class="metric-label">Sprays / botella 100ml</div>
+      <div class="metric-value">1,000</div>
+      <div class="metric-note">a 0.10ml por spray</div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-label">Ingreso potencial micro-spray</div>
+      <div class="metric-value">S/ 1,000</div>
+      <div class="metric-note">a S/ 1.00 por spray</div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-label">Costo promedio por spray</div>
+      <div class="metric-value">S/ 0.47</div>
+      <div class="metric-note">promedio catálogo Falabella</div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-label">Margen micro-spray (S/ 1.00)</div>
+      <div class="metric-value">53%+</div>
+      <div class="metric-note">vs. venta botella cerrada</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><i class="ti ti-droplet" aria-hidden="true"></i> Modelo de micro-spray (liquidez inmediata)</div>
+    <div class="card-body">
+      El spray no se regala. Se vende como "Experiencia de Validación Sensorial". El cliente paga por sentir el aroma en su piel antes de tomar la decisión de compra de la botella. Esto convierte cada tester en una fuente de caja activa. Una botella de S/ 200 a 100ml equivale a 1,000 sprays. Si cada spray se cobra a S/ 1.00, el potencial total de esa botella abierta es S/ 1,000 — cinco veces el valor de venta del frasco cerrado. El arbitraje de inventario abierto es el corazón del modelo.
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><i class="ti ti-flask" aria-hidden="true"></i> Estación de Decanting (laboratorio de fraccionamiento)</div>
+    <div class="card-body">
+      Instalar un área de 0.5 m² exclusiva para fraccionar botellas abiertas (testers o saldos) en viales pequeños. Conviertes inventario estático de baja rotación en flujo de caja de alta rotación. Los decants de 5ml a S/ 35.00 permiten al cliente experimentar el aroma completo (base, corazón, salida) sin comprometerse con S/ 400–800 de una botella completa. <span style="display:block;margin-top:8px;font-weight:500;color:var(--color-text-primary);">Margen decant 5ml → costo ~S/ 2.35 (si botella cuesta S/ 470/100ml) · precio venta S/ 35 · margen bruto &gt;93%.</span>
+    </div>
+  </div>
+
+  <div class="highlight">
+    <strong>Embudo físico-digital:</strong> Papelito Codificado con Mica → aroma persiste 4h vs. 20min sin mica → ventana de decisión ampliada → QR en reverso → WhatsApp pre-cargado con código → conversión.
+  </div>
+
+  <div class="card">
+    <div class="card-title"><i class="ti ti-building-store" aria-hidden="true"></i> B2B — Scent Marketing (espacios comerciales)</div>
+    <div class="card-body">
+      La perfumería no solo vende frascos. Vende la identidad olfativa de otros negocios. Hoteles boutique, clínicas estéticas y restaurantes en Tarma son clientes B2B naturales. Modelo: difusor profesional en consignación (costo cero para el cliente) + venta mensual de esencia concentrada. El local se convierte en punto de exhibición pasiva. <span style="display:block;margin-top:8px;">Ticket B2B estimado: S/ 80–200/mes por local · margen ~70% · 5 locales = S/ 400–1,000/mes ingreso recurrente fijo.</span>
+    </div>
+  </div>
+</div>
+
+<!-- ====== TAB 2: PSICOLOGÍA ====== -->
+<div id="tab-psico" class="tab-panel">
+  <p class="section-intro">Cada elemento del sistema está diseñado para aprovechar sesgos cognitivos documentados. El objetivo es eliminar la "fricción de compra" y convertir la duda en acción sin que el cliente perciba que está siendo guiado.</p>
+
+  <div class="card">
+    <div class="card-title"><i class="ti ti-arrows-split-2" aria-hidden="true"></i> Efecto Señuelo (Decoy Pricing)</div>
+    <div class="card-body">
+      El cerebro humano no evalúa el valor absoluto de un producto; evalúa el valor relativo frente a las opciones disponibles. Al presentar tres opciones asimétricass, el decant de 5ml se convierte en la elección "racional" de la mayoría.
+    </div>
+  </div>
+
+  <div class="two-col">
+    <div class="card">
+      <div class="card-title" style="color:var(--color-text-secondary); font-size:12px; font-weight:400;">Opción A — Muestra</div>
+      <div style="font-size:22px;font-weight:500;color:var(--color-text-primary);margin:6px 0 4px;">Gratis</div>
+      <div style="font-size:12px;color:var(--color-text-secondary);">Papelito en papel. Función: activar curiosidad. Sin compromiso.</div>
+    </div>
+    <div class="card">
+      <div class="card-title" style="color:var(--color-text-secondary); font-size:12px; font-weight:400;">Opción B — Micro-spray</div>
+      <div style="font-size:22px;font-weight:500;color:var(--color-text-primary);margin:6px 0 4px;">S/ 2.00</div>
+      <div style="font-size:12px;color:var(--color-text-secondary);">Spray en piel. Función: señuelo de precio que eleva la percepción del decant.</div>
+    </div>
+  </div>
+  <div class="highlight-info">
+    <strong>Opción C — Decant 5ml · S/ 35.00</strong><br>
+    La opción elegida por ~60–70% del segmento medio. Percibida como "lo mejor entre dos extremos". La Botella completa (S/ 400+) actúa como ancla de precio: hace que S/ 35 parezca accesible.
+  </div>
+
+  <div class="card">
+    <div class="card-title"><i class="ti ti-clock" aria-hidden="true"></i> Extensión de la ventana de decisión (Solución Mica)</div>
+    <div class="card-body">
+      El papelito sin mica expira en 20 minutos (evaporación del alcohol + oxidación). El cliente llega a casa y ya no recuerda el aroma con precisión. La mica es una inversión de &lt;S/ 0.05 que extiende la vida del aroma a 4–6 horas, mantiene el aroma intacto en el bolsillo o cartera, y garantiza que el cliente viva el desarrollo completo del perfume: salida (0–30min), corazón (1–3h) y base (3–6h). Esa experiencia completa convierte. La salida sola, no.
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><i class="ti ti-repeat" aria-hidden="true"></i> Predictive CRM — Algoritmo de consumo</div>
+    <div class="card-body">
+      <div class="formula-box">
+        <span>Consumo diario:</span> 4 sprays/día × 0.10ml = 0.4ml/día<br>
+        <span>Botella 30ml:</span> 30 ÷ 0.4 = 75 días (2.5 meses)<br>
+        <span>Botella 100ml:</span> 100 ÷ 0.4 = 250 días (8.3 meses)<br>
+        <span>Disparo WA (30ml):</span> Día 65 → "Tu aroma está al 15%..."<br>
+        <span>Disparo WA (100ml):</span> Día 230 → "Tu reserva está lista..."
+      </div>
+      Esto convierte el reabastecimiento en un evento predecible que el vendedor controla antes de que el cliente tenga la urgencia. Elimina la competencia de impulso: el cliente no compra porque vio otra fragancia en el mall, sino porque lo contactaron en el momento exacto de necesidad.
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><i class="ti ti-star" aria-hidden="true"></i> Validación social — efecto MGM</div>
+    <div class="card-body">
+      Cuando una persona invita a su familia o amigos al grupo, el grupo de WhatsApp deja de ser "un grupo de ofertas" y se convierte en "un beneficio familiar compartido". El recomendador experimenta orgullo por conseguir sprays gratuitos para otros, el grupo percibe al negocio como generoso y exclusivo, y la perfumería obtiene leads calificados de personas en el mismo círculo social (mismo nivel socioeconómico, mismos gustos, misma capacidad de compra).
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><i class="ti ti-lock" aria-hidden="true"></i> Tokenización del cobro — eliminación de fricción de negociación</div>
+    <div class="card-body">
+      Cartel físico en el mostrador: <strong>"Prueba en papel: Gratis · Prueba en piel: S/ 2 · Vial 5ml: S/ 35"</strong>. Esto elimina la negociación, profesionaliza el proceso de cobro de micro-sprays, y ancla psicológicamente al cliente: nadie negocia cuando el precio está impreso.
+    </div>
+  </div>
+</div>
+
+<!-- ====== TAB 3: SISTEMA MGM ====== -->
+<div id="tab-mgm" class="tab-panel">
+  <p class="section-intro">El Sistema de Referidos Sensorial (MGM - Member-Get-Member) convierte el papelito de prueba en una herramienta de crecimiento viral físico. Cada cliente que recibe un ticket se convierte en un agente de adquisición no remunerado.</p>
+
+  <div class="section-title" style="margin-bottom:12px;"><i class="ti ti-trophy" aria-hidden="true"></i> Estructura de incentivos</div>
+
+  <div class="tier-row">
+    <div class="tier-icon"><i class="ti ti-user" aria-hidden="true" style="color:var(--color-text-secondary);font-size:16px;"></i></div>
+    <div>
+      <div class="tier-label">Nivel Registro (solo el titular)</div>
+      <div class="tier-detail">Se une al grupo WA → activa el sistema</div>
+    </div>
+    <div class="tier-reward" style="color:var(--color-text-secondary);">1 spray validación</div>
+  </div>
+
+  <div class="tier-row" style="border-color:var(--color-border-secondary);">
+    <div class="tier-icon"><i class="ti ti-users" aria-hidden="true" style="color:var(--color-text-info);font-size:16px;"></i></div>
+    <div>
+      <div class="tier-label">Nivel Plata — 1+1 <span class="badge badge-info">Recomendado</span></div>
+      <div class="tier-detail">Titular + 1 referido ambos en el grupo</div>
+      <div class="progress-bar-wrap"><div class="progress-bar-fill" style="width:50%"></div></div>
+    </div>
+    <div class="tier-reward" style="color:var(--color-text-info);">2 sprays gratis</div>
+  </div>
+
+  <div class="tier-row" style="border-color:var(--color-border-secondary);">
+    <div class="tier-icon"><i class="ti ti-users-group" aria-hidden="true" style="color:var(--color-text-success);font-size:16px;"></i></div>
+    <div>
+      <div class="tier-label">Nivel Oro — 1+2 <span class="badge badge-success">Máximo valor</span></div>
+      <div class="tier-detail">Titular + 2 referidos los tres en el grupo</div>
+      <div class="progress-bar-wrap"><div class="progress-bar-fill" style="width:100%;background:var(--color-text-success);"></div></div>
+    </div>
+    <div class="tier-reward" style="color:var(--color-text-success);">3 sprays gratis</div>
+  </div>
+
+  <hr class="divider">
+
+  <div class="section-title" style="margin-bottom:12px;"><i class="ti ti-id" aria-hidden="true"></i> Diseño del ticket — reverso dinámico</div>
+
+  <div class="card">
+    <div class="card-title">Arquitectura visual del reverso</div>
+    <div class="card-body">
+      <ol style="padding-left:18px; line-height:2;">
+        <li><strong>QR central dominante</strong> — texto: "Únete al Club VIP aquí". Debe ser el 40% del área del reverso.</li>
+        <li><strong>Grid de casilleros</strong> — campo manuscrito: Mi celular: [___] · Invitado 1: [___] · Invitado 2: [___]</li>
+        <li><strong>Barra de progreso visual</strong> — línea que conecta los 3 casilleros con íconos de spray (1 icono por nivel completado).</li>
+        <li><strong>Condición visible</strong> — texto pequeño: "Ambos deben estar en el grupo para canjear".</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><i class="ti ti-shield-check" aria-hidden="true"></i> Protocolo de verificación anti-fraude (flujo de 15 segundos)</div>
+    <div class="card-body">
+      <ul class="step-list">
+        <li class="step-item"><div class="step-num">1</div><div class="step-content"><div class="step-title">Recepción del ticket</div><div class="step-desc">El cajero verifica que los campos de celular estén completos y la escritura sea legible.</div></div></li>
+        <li class="step-item"><div class="step-num">2</div><div class="step-content"><div class="step-title">Verificación Flash en WhatsApp</div><div class="step-desc">Abrir el buscador del grupo. Escribir los últimos 4 dígitos de cada número anotado. Si aparecen como miembros, válido.</div></div></li>
+        <li class="step-item"><div class="step-num">3</div><div class="step-content"><div class="step-title">Aplicación de sprays</div><div class="step-desc">Proceder al spray directamente en muñeca del cliente. Nunca en el papel (contamina la mica).</div></div></li>
+        <li class="step-item"><div class="step-num">4</div><div class="step-content"><div class="step-title">Marcado del ticket</div><div class="step-desc">Perforar con perforadora de papel o tachar con marcador permanente. Impide reutilización.</div></div></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="highlight">
+    <strong>Pitch para el dueño:</strong> "Su papelito de perfume ahora es un vendedor que trabaja gratis. Cada vez que usted entrega uno, ese cliente se encarga de traerle a dos personas más a su base de datos de WhatsApp para ganarse un spray. Usted no gasta en publicidad. Usted premia la recomendación real."
+  </div>
+</div>
+
+<!-- ====== TAB 4: FINANZAS ====== -->
+<div id="tab-finanzas" class="tab-panel">
+  <p class="section-intro">Análisis financiero completo por línea de negocio. Todos los valores son conservadores y calculados sobre el catálogo de referencia Falabella.</p>
+
+  <div class="section-title" style="margin-bottom:12px;"><i class="ti ti-calculator" aria-hidden="true"></i> Costo de adquisición de cliente (CAC)</div>
+
+  <table class="data-table">
+    <thead><tr><th>Canal</th><th>CAC estimado</th><th>Calidad del lead</th><th>Escalabilidad</th></tr></thead>
+    <tbody>
+      <tr><td>Facebook Ads (Tarma)</td><td>S/ 15–40</td><td><span class="badge badge-warning">Media</span></td><td><span class="badge badge-success">Alta</span></td></tr>
+      <tr><td>Volantes físicos</td><td>S/ 8–20</td><td><span class="badge badge-warning">Baja</span></td><td><span class="badge badge-warning">Media</span></td></tr>
+      <tr><td>Sistema MGM (papelito)</td><td>&lt; S/ 0.20</td><td><span class="badge badge-success">Muy alta</span></td><td><span class="badge badge-info">Orgánica</span></td></tr>
+      <tr><td>Micro-spray (walk-in)</td><td>S/ 0.47 (1 spray)</td><td><span class="badge badge-success">Alta</span></td><td><span class="badge badge-success">Alta</span></td></tr>
+    </tbody>
+  </table>
+
+  <div class="section-title" style="margin-bottom:12px; margin-top:4px;"><i class="ti ti-chart-line" aria-hidden="true"></i> Proyección conservadora de ingresos mensuales</div>
+
+  <table class="data-table">
+    <thead><tr><th>Línea de negocio</th><th>Volumen estimado/mes</th><th>Ticket unitario</th><th>Ingreso bruto</th><th>Margen est.</th></tr></thead>
+    <tbody>
+      <tr><td>Micro-sprays (S/ 1)</td><td>200 sprays</td><td>S/ 1.00</td><td>S/ 200</td><td>~53%</td></tr>
+      <tr><td>Micro-sprays (S/ 2)</td><td>100 sprays</td><td>S/ 2.00</td><td>S/ 200</td><td>~77%</td></tr>
+      <tr><td>Decants 5ml</td><td>30 unidades</td><td>S/ 35.00</td><td>S/ 1,050</td><td>~93%</td></tr>
+      <tr><td>Botellas completas</td><td>10 unidades</td><td>S/ 350 prom.</td><td>S/ 3,500</td><td>~30–40%</td></tr>
+      <tr><td>B2B scent marketing</td><td>3 locales</td><td>S/ 120/mes</td><td>S/ 360</td><td>~70%</td></tr>
+      <tr style="font-weight:500;"><td>Total estimado</td><td>—</td><td>—</td><td>S/ 5,310</td><td>—</td></tr>
+    </tbody>
+  </table>
+
+  <div class="highlight-info" style="margin-top:4px;">
+    <strong>ROI del Sistema MGM:</strong> Costo del incentivo (3 sprays) ≈ S/ 0.15 en insumo · Valor del lead adquirido (potencial compra S/ 35–400) · ROI potencial: 233x – 2,666x por lead generado.
+  </div>
+
+  <div class="section-title" style="margin-bottom:12px; margin-top:4px;"><i class="ti ti-coin" aria-hidden="true"></i> Análisis por SKU — catálogo Falabella</div>
+
+  <table class="data-table">
+    <thead><tr><th>Perfume</th><th>ml</th><th>Costo/spray</th><th>Precio spray x S/1</th><th>Margen spray</th></tr></thead>
+    <tbody>
+      <tr><td>Guess Amore Roma EDT</td><td>100</td><td>S/ 0.17</td><td>S/ 1.00</td><td><span class="badge badge-success">83%</span></td></tr>
+      <tr><td>Armaf Club De Nuit</td><td>100</td><td>S/ 0.22</td><td>S/ 1.00</td><td><span class="badge badge-success">78%</span></td></tr>
+      <tr><td>Tommy Hilfiger Men</td><td>200</td><td>S/ 0.20</td><td>S/ 1.00</td><td><span class="badge badge-success">80%</span></td></tr>
+      <tr><td>Lancôme La Vie Est Belle</td><td>30</td><td>S/ 1.03</td><td>S/ 1.00</td><td><span class="badge badge-danger">Pérdida</span></td></tr>
+      <tr><td>Carolina Herrera 212</td><td>30</td><td>S/ 0.86</td><td>S/ 1.00</td><td><span class="badge badge-warning">14%</span></td></tr>
+    </tbody>
+  </table>
+  <div style="font-size:12px;color:var(--color-text-secondary);margin-bottom:14px;">Para perfumes premium de 30ml (Lancôme, CH), cobrar S/ 2.00 por spray para mantener margen positivo.</div>
+
+  <div class="card">
+    <div class="card-title"><i class="ti ti-trending-up" aria-hidden="true"></i> LTV (Valor de vida del cliente)</div>
+    <div class="card-body">
+      Si un cliente compra una botella de 100ml cada 8.3 meses, en 3 años realiza ~4.3 compras. A S/ 350 promedio → LTV = S/ 1,505 por cliente. El costo de adquisición vía MGM es &lt;S/ 0.20. El ratio LTV/CAC es &gt;7,500x. Invertir en el sistema MGM es la decisión financiera más eficiente disponible.
+    </div>
+  </div>
+</div>
+
+<!-- ====== TAB 5: LEGAL ====== -->
+<div id="tab-legal" class="tab-panel">
+  <p class="section-intro">Marco legal aplicable en Perú para la operación de perfumerías con modelo de micro-ventas, sistema de referidos y aromatización comercial B2B.</p>
+
+  <div class="highlight-danger">
+    <strong>Aviso importante:</strong> Este análisis es orientativo. Para decisiones legales definitivas (contratos, constitución de empresa, tributación), consultar siempre con un abogado o contador colegiado.
+  </div>
+
+  <div class="section-title" style="margin-bottom:12px;"><i class="ti ti-building" aria-hidden="true"></i> Estructura societaria recomendada</div>
+
+  <div class="card">
+    <div class="card-title">Régimen tributario — MYPE Perú</div>
+    <div class="card-body">
+      Para una perfumería en Tarma con ingresos &lt;S/ 96,000/año → <strong>Régimen MYPE Tributario (RMT)</strong>. Permite llevar contabilidad simplificada, tasa del Impuesto a la Renta: 10% sobre utilidades netas (primeras 15 UIT) y 29.5% sobre el exceso. IGV: 18% sobre ventas si supera S/ 96,000/año en ventas gravadas. Por debajo de ese umbral → Nuevo RUS (cuota fija mensual S/ 20–50 según categoría). El micro-spray al ser una prestación de servicio también está afecto a IGV si se supera el umbral. Emitir boleta electrónica por cada venta, incluso micro-transacciones, para acreditación fiscal.
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><i class="ti ti-file-text" aria-hidden="true"></i> Sistema de referidos — aspectos legales</div>
+    <div class="card-body">
+      El sistema MGM (referidos por sprays gratuitos) no requiere formalización especial siempre que: los sprays gratuitos sean tratados como descuentos comerciales (no como pago de servicios), no se soliciten datos sensibles más allá de número de celular, se cumpla con la Ley N° 29733 de Protección de Datos Personales — el número de celular es dato personal. Recomendación: incluir en el ticket una leyenda mínima: "Al completar este formulario, autorizas el uso de tu número para contacto comercial de [Nombre Perfumería]."
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><i class="ti ti-building-store" aria-hidden="true"></i> B2B Scent Marketing — contrato de consignación</div>
+    <div class="card-body">
+      El modelo de difusor en consignación + venta mensual de esencia requiere un contrato simple de consignación que incluya: descripción del equipo entregado (difusor, modelo, serie), responsabilidad por daños o pérdida del equipo, precio fijo mensual de la esencia y condiciones de reposición, plazo mínimo del acuerdo (recomendado: 3 meses), cláusula de exclusividad (el local no puede usar esencias de otra perfumería durante el contrato). Sin este contrato, el local puede devolver el difusor sin previo aviso y no existe obligación de pago.
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><i class="ti ti-shield" aria-hidden="true"></i> Regulación de cosméticos y fragancias — DIGEMID / DIGESA</div>
+    <div class="card-body">
+      En Perú, los productos cosméticos (incluidas fragancias) requieren Notificación Sanitaria Obligatoria (NSO) ante DIGESA para su comercialización. Si la perfumería revende productos con NSO vigente (botellas originales de marca), no requiere gestión adicional. Si realiza fraccionamiento o mezcla de fragancias para crear productos propios (decants con etiqueta propia del negocio), podría requerir NSO propia o actuar como distribuidor autorizado. Para decants de botellas originales sin modificación de fórmula y para uso interno como muestras → zona gris regulatoria; en la práctica no se exige NSO para decants de tester. Consultar con DIGESA para certeza absoluta.
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><i class="ti ti-message-circle" aria-hidden="true"></i> Grupo de WhatsApp — cumplimiento LORTAD/LGPD equivalente Perú</div>
+    <div class="card-body">
+      Ley N° 29733 establece que el titular del dato debe dar consentimiento expreso para recibir comunicaciones comerciales. El ticket MGM actúa como formulario de consentimiento si incluye la leyenda de autorización. No enviar mensajes masivos a números que no hayan dado consentimiento explícito (evitar ban de cuenta de WhatsApp Business). Usar WhatsApp Business API o una cuenta Business verificada para evitar bloqueos por actividad de spam.
+    </div>
+  </div>
+</div>
+
+<!-- ====== TAB 6: OPERACIÓN ====== -->
+<div id="tab-operacion" class="tab-panel">
+  <p class="section-intro">Flujo operativo completo desde la apertura del local hasta el cierre diario. Diseñado para ser ejecutado por 1–2 personas sin formación técnica avanzada.</p>
+
+  <div class="section-title" style="margin-bottom:12px;"><i class="ti ti-sun" aria-hidden="true"></i> Protocolo de apertura (30 minutos)</div>
+
+  <ul class="step-list">
+    <li class="step-item"><div class="step-num">1</div><div class="step-content"><div class="step-title">Preparación de la Estación de Experiencia</div><div class="step-desc">Colocar 3 testers del día en el mostrador con papelitos con mica ya cortados (mínimo 20 unidades). Revisar que los QR del reverso funcionen escaneándolos con el celular.</div></div></li>
+    <li class="step-item"><div class="step-num">2</div><div class="step-content"><div class="step-title">Activar cartel de precios</div><div class="step-desc">"Prueba en papel: Gratis · Prueba en piel: S/ 2 · Vial 5ml: S/ 35". Verificar que esté visible desde la entrada.</div></div></li>
+    <li class="step-item"><div class="step-num">3</div><div class="step-content"><div class="step-title">Revisar grupo de WhatsApp</div><div class="step-desc">Responder mensajes pendientes. Verificar que el link de invitación del QR siga activo. Si no, regenerar y actualizar los papelitos.</div></div></li>
+    <li class="step-item"><div class="step-num">4</div><div class="step-content"><div class="step-title">Revisar agenda de predictive CRM</div><div class="step-desc">¿Algún cliente llega al día 65 o 230 hoy? Preparar mensaje personalizado para enviar entre 10–11am.</div></div></li>
+    <li class="step-item"><div class="step-num">5</div><div class="step-content"><div class="step-title">Verificar stock de decants</div><div class="step-desc">Si hay menos de 5 viales de 5ml listos, preparar nuevos desde testers antes de abrir al público.</div></div></li>
+  </ul>
+
+  <div class="section-title" style="margin-bottom:12px; margin-top:4px;"><i class="ti ti-user-check" aria-hidden="true"></i> Protocolo de atención al cliente (el "Script de 3 Pasos")</div>
+
+  <div class="card">
+    <div class="card-title">Paso 1 — Activación sensorial (primeros 30 segundos)</div>
+    <div class="card-body">El vendedor no pregunta "¿en qué le ayudo?". Entrega directamente un papelito con mica: "Acaba de llegar algo que le puede interesar. Huélalo." La fragancia inicia la experiencia antes de que el cliente tome una decisión consciente. El sentido del olfato activa respuestas emocionales directas en el sistema límbico, bypaseando la resistencia racional.</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Paso 2 — Presentación del menú de decisión</div>
+    <div class="card-body">Si el cliente muestra interés (pregunta por el precio, vuelve a oler el papelito, pregunta el nombre): señalar el cartel de precios. "Si quiere sentirlo en su piel antes de decidir, le doy un spray directo por S/ 2. O si ya le gustó, tenemos el vial de 5ml que le dura el viaje o una semana de uso, a S/ 35." No presionar. Dejar que el efecto señuelo opere solo.</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Paso 3 — Activación del MGM antes del cierre</div>
+    <div class="card-body">Al momento del pago (cualquier transacción): "Le doy también este ticket. Si lo comparte con un familiar o amigo y ambos se unen al grupo de WhatsApp del Club VIP, en su próxima visita le regalamos dos sprays en piel, gratis." Entregar el ticket. No explicar más. La simplicidad es clave.</div>
+  </div>
+
+  <div class="section-title" style="margin-bottom:12px; margin-top:4px;"><i class="ti ti-moon" aria-hidden="true"></i> Protocolo de cierre diario (15 minutos)</div>
+
+  <ul class="step-list">
+    <li class="step-item"><div class="step-num">1</div><div class="step-content"><div class="step-title">Registro de métricas del día</div><div class="step-desc">Anotar en hoja simple: N° de peatones que entraron / N° de micro-sprays vendidos / N° de decants vendidos / N° de tickets MGM entregados / N° de miembros nuevos en el grupo WA.</div></div></li>
+    <li class="step-item"><div class="step-num">2</div><div class="step-content"><div class="step-title">Actualizar CRM predictivo</div><div class="step-desc">Para cada venta de botella completa, anotar la fecha + tamaño + nombre del cliente en la hoja de seguimiento. Calcular fecha de disparo WA (día 65 o 230 según tamaño).</div></div></li>
+    <li class="step-item"><div class="step-num">3</div><div class="step-content"><div class="step-title">Reponer papelitos con mica</div><div class="step-desc">Asegurarse de tener mínimo 30 papelitos listos para el día siguiente.</div></div></li>
+  </ul>
+</div>
+
+<!-- ====== TAB 7: AUDITORÍA ====== -->
+<div id="tab-auditoria" class="tab-panel">
+  <p class="section-intro">El "Kenyo Scan" es el protocolo de diagnóstico gratuito que ofreces al dueño de la perfumería. Sirve para identificar palancas de ingresos no explotadas y construir confianza antes de proponer una consultoría paga.</p>
+
+  <div class="section-title" style="margin-bottom:12px;"><i class="ti ti-clipboard-list" aria-hidden="true"></i> Los 3 datos clave que solicitar (pre-diagnóstico)</div>
+
+  <ul class="step-list">
+    <li class="step-item"><div class="step-num">1</div><div class="step-content"><div class="step-title">Ticket promedio actual</div><div class="step-desc">Para calcular el potencial de upselling. Si el ticket promedio es S/ 50, hay margen para llevarlo a S/ 80–120 con el modelo decant + micro-spray. Si ya es S/ 300+, el foco está en frecuencia de compra (CRM predictivo).</div></div></li>
+    <li class="step-item"><div class="step-num">2</div><div class="step-content"><div class="step-title">Tasa de conversión de peatones</div><div class="step-desc">¿Cuántas personas pasan frente al local vs. cuántas entran? En Tarma, si el ratio es &lt;10%, el Sampling Codificado con papelito hacia afuera del local puede triplicarlo. Si ya entra el 30%+, el problema está en la conversión interna (aplicar decoy pricing y script de 3 pasos).</div></div></li>
+    <li class="step-item"><div class="step-num">3</div><div class="step-content"><div class="step-title">Ventas por categoría (últimos 30 días)</div><div class="step-desc">Identificar los "muertos de estantería": perfumes que no se han vendido en &gt;30 días. Estos son los candidatos perfectos para convertir en decants (recuperar el capital inmovilizado) y para la Estación de Decanting.</div></div></li>
+  </ul>
+
+  <div class="section-title" style="margin-bottom:12px; margin-top:4px;"><i class="ti ti-target" aria-hidden="true"></i> KPIs de seguimiento mensual</div>
+
+  <table class="data-table">
+    <thead><tr><th>Métrica</th><th>Cómo medirla</th><th>Objetivo mes 1</th><th>Objetivo mes 3</th></tr></thead>
+    <tbody>
+      <tr><td>Miembros grupo WA</td><td>Info del grupo WA</td><td>50 miembros</td><td>200 miembros</td></tr>
+      <tr><td>Tasa conversión peatón</td><td>Conteo manual 2h/día</td><td>+5% vs. línea base</td><td>+15% vs. línea base</td></tr>
+      <tr><td>Ticket promedio</td><td>Suma ventas ÷ N° transacciones</td><td>+20% vs. línea base</td><td>+40% vs. línea base</td></tr>
+      <tr><td>Ingresos micro-spray/mes</td><td>Caja diaria etiquetada</td><td>S/ 200</td><td>S/ 600</td></tr>
+      <tr><td>Decants vendidos/mes</td><td>Inventario de viales</td><td>15 unidades</td><td>40 unidades</td></tr>
+      <tr><td>CAC (costo por lead WA)</td><td>Gasto incentivos ÷ nuevos miembros</td><td>&lt; S/ 1.00</td><td>&lt; S/ 0.30</td></tr>
+      <tr><td>Retention Lift (papelito con mica)</td><td>% clientes que regresan con papelito</td><td>Medición base</td><td>+15% vs. sin mica</td></tr>
+    </tbody>
+  </table>
+
+  <div class="highlight">
+    <strong>Retention Lift:</strong> Medir cuántas personas conservan el papelito con mica vs. sin mica después de 30 minutos. Test A/B: entregar una semana con mica y una semana sin mica. Comparar el % de personas que regresan mencionando el papelito. Este dato justifica el costo de la mica ante el dueño con evidencia propia.
+  </div>
+
+  <div class="card">
+    <div class="card-title"><i class="ti ti-presentation" aria-hidden="true"></i> Estructura de la propuesta de consultoría paga (post-auditoría)</div>
+    <div class="card-body">
+      Después del diagnóstico gratuito, la propuesta tiene 3 fases. <strong>Fase 1 — Activación (mes 1):</strong> implementación del script de 3 pasos + cartel de precios + papelito con mica. Fee: S/ 300–500. <strong>Fase 2 — Crecimiento (mes 2–3):</strong> sistema MGM + grupo WA + predictive CRM básico. Fee: S/ 500–800/mes o % de incremento en ventas (recomendado: 15% del incremento). <strong>Fase 3 — Escala (mes 4+):</strong> B2B scent marketing + expansión a 2do local o franquicia del modelo. Fee: S/ 1,000+/mes o acuerdo de equity. El diagnóstico gratuito es la herramienta de venta más poderosa porque le muestra al dueño los números reales de lo que está dejando de ganar.
+    </div>
+  </div>
+
+  <button class="cta-btn" onclick="sendPrompt('Crea el script de diagnóstico gratuito completo para presentar a un dueño de perfumería en Tarma. Incluye las preguntas exactas, cómo interpretar sus respuestas y cómo hacer la transición a la propuesta paga.')">
+    <i class="ti ti-arrow-right" aria-hidden="true"></i> Generar script de diagnóstico para el dueño ↗
+  </button>
+</div>
+
+<script>
+  function showTab(id) {
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById('tab-' + id).classList.add('active');
+    event.currentTarget.classList.add('active');
+  }
+</script>

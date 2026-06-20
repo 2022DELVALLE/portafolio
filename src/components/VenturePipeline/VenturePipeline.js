@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './VenturePipeline.css';
+import PerfumePlaybookModal from './PerfumePlaybookModal';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
     faMicrochip, faChartLine, faCube,
@@ -110,6 +111,8 @@ const startupsData = [
 ];
 
 const VenturePipeline = () => {
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
     return (
         <section className="venture">
 
@@ -161,7 +164,14 @@ const VenturePipeline = () => {
             {/* GRID DE LAS 6 TARJETAS */}
             <div className="venture__grid">
                 {startupsData.map((startup) => (
-                    <article className="startup-card" key={startup.id}>
+                    <article 
+                        className="startup-card" 
+                        key={startup.id}
+                        onClick={() => {
+                            if (startup.id === '03') setIsModalOpen(true);
+                        }}
+                        style={{ cursor: startup.id === '03' ? 'pointer' : 'default' }}
+                    >
 
                         {/* Header de Tarjeta */}
                         <div className="startup-card__top">
@@ -248,6 +258,9 @@ const VenturePipeline = () => {
                     </button>
                 </div>
             </div>
+
+            {/* RENDERIZAR MODAL DE PLAYBOOK DE PERFUME */}
+            {isModalOpen && <PerfumePlaybookModal onClose={() => setIsModalOpen(false)} />}
 
         </section>
     );

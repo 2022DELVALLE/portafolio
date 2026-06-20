@@ -1,8 +1,8 @@
 import React from 'react';
-import Hero from './components/Hero';
-import VenturePipeline from './components/VenturePipeline';
-import SystemsArchitecture from './components/SystemsArchitecture.js';
-import e from './components/PerfumePlaybook.js';
+import Hero from './components/Hero/Hero';
+import VenturePipeline from './components/VenturePipeline/VenturePipeline';
+import SystemsArchitecture from './components/SystemsArchitecture/SystemsArchitecture';
+import PerfumePlaybook from './components/PerfumePlaybook/PerfumePlaybook';
 
 // Aquí hemos eliminado todo el código basura anterior. 
 // Solo importamos y renderizamos los componentes necesarios.
@@ -12,7 +12,8 @@ function App() {
       <Hero />
       <VenturePipeline />
       <SystemsArchitecture />
-      <e />
+      <PerfumePlaybook />
+      
     </div>
   );
 }
