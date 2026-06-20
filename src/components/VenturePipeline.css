@@ -1,0 +1,490 @@
+/* =========================================
+   VARIABLES CORPORATE AI & VC DASHBOARD
+========================================= */
+:root {
+    --color-bg-pure: #FFFFFF;
+    --color-accent-main: #FF6600;
+    --color-accent-hover: #FF7A1A;
+    --color-accent-soft: #FFF2EA;
+    --color-corp-black: #222222;
+    --color-text-gray: #555555;
+    --color-light-gray: #D8D8D8;
+    --color-badge-gray: #F6F6F6;
+    --color-border: #EFEFEF;
+
+    --shadow-main: 0 12px 35px rgba(90, 90, 90, 0.06);
+    --shadow-hover: 0 20px 45px rgba(90, 90, 90, 0.10);
+
+    --font-display: 'Oxanium', sans-serif;
+    --font-ui: 'Inter', sans-serif;
+}
+
+/* =========================================
+   BLOCK: venture
+========================================= */
+.venture {
+    background-color: var(--color-bg-pure);
+    padding: 100px 5vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    font-family: var(--font-ui);
+}
+
+/* Decoraciones y Órbitas */
+.venture__decoration {
+    position: absolute;
+    width: 140px;
+    height: 140px;
+    background-color: var(--color-accent-soft);
+    opacity: 0.4;
+    border-radius: 20px;
+    z-index: 0;
+}
+
+.venture__decoration--top-right {
+    top: -40px;
+    right: -40px;
+    transform: rotate(45deg);
+}
+
+.venture__decoration--bottom-left {
+    bottom: 15%;
+    left: -60px;
+    transform: rotate(45deg);
+}
+
+.venture__orbit {
+    position: absolute;
+    border-radius: 50%;
+    border: 1px solid var(--color-light-gray);
+    opacity: 0.5;
+    z-index: 0;
+}
+
+.venture__orbit--1 {
+    width: 800px;
+    height: 800px;
+    top: -400px;
+    left: -200px;
+}
+
+.venture__orbit--2 {
+    width: 1200px;
+    height: 1200px;
+    bottom: -600px;
+    right: -300px;
+}
+
+/* --- HEADER --- */
+.venture__header {
+    text-align: center;
+    z-index: 1;
+    margin-bottom: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.venture__title {
+    font-family: var(--font-display);
+    font-size: clamp(40px, 5vw, 72px);
+    font-weight: 800;
+    line-height: 1.1;
+    margin: 0 0 20px 0;
+    letter-spacing: -1px;
+}
+
+.venture__title--orange {
+    color: var(--color-accent-main);
+}
+
+.venture__title--dark {
+    color: var(--color-corp-black);
+}
+
+.venture__subtitle {
+    font-size: clamp(18px, 1.5vw, 24px);
+    font-weight: 500;
+    color: var(--color-text-gray);
+    line-height: 1.5;
+    margin: 0 0 40px 0;
+    max-width: 800px;
+}
+
+.venture__highlight {
+    color: var(--color-accent-main);
+    font-weight: 600;
+}
+
+/* --- KPI PANEL --- */
+.venture__kpi-panel {
+    background: var(--color-bg-pure);
+    border-radius: 30px;
+    box-shadow: 0 10px 40px rgba(90, 90, 90, 0.08);
+    width: 100%;
+    max-width: 650px;
+    height: auto;
+    min-height: 140px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 20px;
+    border: 1px solid var(--color-border);
+}
+
+.venture__kpi-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.venture__kpi-icon {
+    color: var(--color-accent-main);
+    font-size: 32px;
+}
+
+.venture__kpi-content {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.venture__kpi-number {
+    font-family: var(--font-display);
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--color-corp-black);
+    line-height: 1;
+}
+
+.venture__kpi-label {
+    font-size: 14px;
+    color: var(--color-text-gray);
+    font-weight: 600;
+    margin-top: 4px;
+}
+
+.venture__kpi-divider {
+    width: 1px;
+    height: 60px;
+    background-color: var(--color-border);
+}
+
+/* --- GRID DE STARTUPS --- */
+.venture__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 550px));
+    gap: 40px;
+    width: 100%;
+    max-width: 1700px;
+    justify-content: center;
+    z-index: 1;
+    margin-bottom: 80px;
+}
+
+/* =========================================
+   BLOCK: startup-card
+========================================= */
+.startup-card {
+    background: var(--color-bg-pure);
+    border: 1px solid var(--color-border);
+    border-radius: 30px;
+    box-shadow: var(--shadow-main);
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 100%;
+}
+
+.startup-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-hover);
+}
+
+.startup-card__top {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.startup-card__header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.startup-card__number {
+    background: var(--color-accent-soft);
+    color: var(--color-accent-main);
+    font-family: var(--font-display);
+    font-size: 20px;
+    font-weight: 800;
+    width: 45px;
+    height: 45px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.startup-card__name {
+    font-family: var(--font-display);
+    font-size: 28px;
+    color: var(--color-corp-black);
+    margin: 0;
+    line-height: 1;
+}
+
+.startup-card__category {
+    color: var(--color-accent-main);
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.startup-card__badges {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.startup-card__badge {
+    padding: 6px 14px;
+    border-radius: 100px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.startup-card__badge--primary {
+    background: var(--color-accent-soft);
+    color: var(--color-accent-main);
+}
+
+.startup-card__badge--secondary {
+    background: var(--color-badge-gray);
+    color: var(--color-text-gray);
+}
+
+/* Espacio reservado para Render 3D */
+.startup-card__visual {
+    width: 100%;
+    height: 120px;
+    background: var(--color-badge-gray);
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px dashed var(--color-light-gray);
+}
+
+.startup-card__render-placeholder {
+    color: var(--color-light-gray);
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.startup-card__bottom {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    flex: 1;
+}
+
+.startup-card__model {
+    display: flex;
+    gap: 12px;
+    background: var(--color-badge-gray);
+    padding: 15px;
+    border-radius: 15px;
+}
+
+.startup-card__section-icon {
+    color: var(--color-corp-black);
+    font-size: 18px;
+    margin-top: 2px;
+}
+
+.startup-card__section-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--color-corp-black);
+    margin: 0 0 4px 0;
+}
+
+.startup-card__model-desc {
+    font-size: 13px;
+    color: var(--color-text-gray);
+    margin: 0;
+    line-height: 1.4;
+}
+
+.startup-card__thesis-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--color-accent-main);
+    font-size: 14px;
+    font-weight: 700;
+    margin: 0 0 10px 0;
+}
+
+.startup-card__thesis-icon {
+    font-size: 16px;
+}
+
+.startup-card__thesis-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.startup-card__thesis-item {
+    font-size: 13px;
+    color: var(--color-text-gray);
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    font-weight: 500;
+    line-height: 1.4;
+}
+
+.startup-card__bullet {
+    color: var(--color-accent-main);
+    margin-top: 3px;
+    font-size: 12px;
+}
+
+/* --- CTA INFERIOR --- */
+.venture__cta {
+    background: var(--color-bg-pure);
+    border-radius: 35px;
+    box-shadow: 0 15px 45px rgba(90, 90, 90, 0.08);
+    padding: 30px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1100px;
+    z-index: 1;
+    border: 1px solid var(--color-border);
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.venture__cta-left {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.venture__cta-icon {
+    font-size: 40px;
+    color: var(--color-accent-main);
+}
+
+.venture__cta-text h4 {
+    margin: 0 0 5px 0;
+    font-size: 20px;
+    color: var(--color-corp-black);
+    font-weight: 700;
+}
+
+.venture__cta-text p {
+    margin: 0;
+    color: var(--color-text-gray);
+    font-weight: 500;
+}
+
+.venture__cta-right {
+    display: flex;
+    gap: 15px;
+}
+
+/* =========================================
+   BLOCK: btn (Botones)
+========================================= */
+.btn {
+    padding: 14px 24px;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 14px;
+    font-family: var(--font-ui);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.3s ease;
+}
+
+.btn__icon {
+    font-size: 16px;
+}
+
+.btn--primary {
+    background: var(--color-accent-main);
+    color: var(--color-bg-pure);
+    border: none;
+}
+
+.btn--primary:hover {
+    background: var(--color-accent-hover);
+    transform: translateY(-2px);
+}
+
+.btn--secondary {
+    background: transparent;
+    color: var(--color-accent-main);
+    border: 2px solid var(--color-accent-main);
+}
+
+.btn--secondary:hover {
+    background: var(--color-accent-soft);
+    transform: translateY(-2px);
+}
+
+/* Responsive básico para la CTA y Panel KPI en pantallas muy pequeñas */
+@media (max-width: 900px) {
+    .venture__cta {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .venture__cta-left {
+        flex-direction: column;
+    }
+
+    .venture__cta-right {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .btn {
+        justify-content: center;
+    }
+
+    .venture__kpi-panel {
+        flex-direction: column;
+        gap: 20px;
+        width: 85%;
+    }
+
+    .venture__kpi-divider {
+        width: 60px;
+        height: 1px;
+    }
+}
+
+.startup-card__protected-icon {
+    font-size: 18px;
+    color: var(--color-text-gray);
+    opacity: 0.6;
+}

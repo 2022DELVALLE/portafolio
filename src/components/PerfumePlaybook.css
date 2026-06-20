@@ -1,0 +1,232 @@
+/* =========================================
+   PLAYBOOK DE MONETIZACIÓN (BEM STRICT)
+   Paleta: Blanco, #2B2B2B, #6A6A6A, #FF6600
+   ========================================= */
+
+.playbook {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 4rem 2rem;
+    font-family: 'Inter', sans-serif;
+    background-color: #FFFFFF;
+}
+
+/* --- HEADER DEL PLAYBOOK --- */
+.playbook__header {
+    text-align: center;
+    margin-bottom: 4rem;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.playbook__tag {
+    color: #FF6600;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    font-family: 'Oxanium', 'Rajdhani', sans-serif;
+}
+
+.playbook__title {
+    color: #2B2B2B;
+    font-size: 3rem;
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 1rem;
+    font-family: 'Oxanium', 'Rajdhani', sans-serif;
+}
+
+.playbook__subtitle {
+    color: #6A6A6A;
+    font-size: 1.25rem;
+    font-weight: 500;
+    margin-bottom: 2rem;
+}
+
+.playbook__overview {
+    color: #2B2B2B;
+    font-size: 1rem;
+    line-height: 1.6;
+    background-color: #F8F9FA;
+    padding: 1.5rem;
+    border-left: 4px solid #FF6600;
+    border-radius: 0 8px 8px 0;
+    text-align: left;
+}
+
+/* --- GRID DE MÓDULOS --- */
+.playbook__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+    margin-bottom: 4rem;
+}
+
+/* --- TARJETAS (CARDS) --- */
+.playbook-card {
+    background: #FFFFFF;
+    border: 1px solid #E5E7EB;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05), 0 10px 15px rgba(0, 0, 0, 0.03);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.playbook-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08), 0 20px 25px rgba(0, 0, 0, 0.05);
+    border-color: #FFE5D3;
+}
+
+.playbook-card__header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.playbook-card__icon-wrapper {
+    background-color: #FFE5D3;
+    width: 48px;
+    height: 48px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 1rem;
+    flex-shrink: 0;
+}
+
+.playbook-card__icon {
+    color: #FF6600;
+    font-size: 1.5rem;
+}
+
+.playbook-card__title {
+    color: #2B2B2B;
+    font-size: 1.15rem;
+    font-weight: 700;
+    font-family: 'Oxanium', 'Rajdhani', sans-serif;
+    line-height: 1.2;
+}
+
+.playbook-card__description {
+    color: #6A6A6A;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid #F3F4F6;
+    flex-grow: 1;
+}
+
+.playbook-card__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.playbook-card__list-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 0.75rem;
+    color: #2B2B2B;
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+.playbook-card__check {
+    color: #FF6600;
+    margin-right: 0.75rem;
+    margin-top: 0.2rem;
+    font-size: 0.85rem;
+}
+
+/* --- TESIS CENTRAL (DESTACADO) --- */
+.playbook-thesis {
+    background: linear-gradient(135deg, #111111 0%, #2B2B2B 100%);
+    border-radius: 16px;
+    padding: 4rem 3rem;
+    color: #FFFFFF;
+    box-shadow: 0 20px 25px rgba(0, 0, 0, 0.15);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Detalle visual sutil en el fondo oscuro */
+.playbook-thesis::before {
+    content: '';
+    position: absolute;
+    top: -50px;
+    right: -50px;
+    width: 200px;
+    height: 200px;
+    background: #FF6600;
+    opacity: 0.1;
+    border-radius: 50%;
+    filter: blur(40px);
+}
+
+.playbook-thesis__content {
+    position: relative;
+    z-index: 1;
+}
+
+.playbook-thesis__title {
+    color: #FF6600;
+    font-size: 2rem;
+    font-family: 'Oxanium', 'Rajdhani', sans-serif;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.playbook-thesis__text {
+    font-size: 1.25rem;
+    text-align: center;
+    color: #D9D9D9;
+    margin-bottom: 3rem;
+}
+
+.playbook-thesis__text strong {
+    color: #FFFFFF;
+}
+
+.playbook-thesis__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+}
+
+.playbook-thesis__item {
+    background: rgba(255, 255, 255, 0.05);
+    border-left: 3px solid #FF6600;
+    padding: 1.5rem;
+    border-radius: 0 8px 8px 0;
+    font-size: 0.95rem;
+    color: #A3A3A3;
+    line-height: 1.5;
+}
+
+.playbook-thesis__item span {
+    display: block;
+    color: #FFFFFF;
+    font-weight: 600;
+    margin-top: 0.5rem;
+    font-size: 1.05rem;
+}
+
+.playbook-thesis__footer {
+    text-align: center;
+    font-size: 1.1rem;
+    color: #D9D9D9;
+    line-height: 1.6;
+    max-width: 800px;
+    margin: 0 auto;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 2rem;
+}
