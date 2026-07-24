@@ -1,0 +1,582 @@
+:root {
+    /* Paleta de Colores Mejorada y Premium */
+    --color-bg: #FFFFFF;
+    --color-text-main: #1A1A1A;
+    --color-text-sec: #5A5A5A;
+    --color-accent: #FF5500;
+    --color-accent-soft: #FFF0E5;
+    --color-shadow: rgba(0, 0, 0, 0.05);
+    --color-shadow-heavy: rgba(255, 85, 0, 0.12);
+    --color-decorative: #F5F5F5;
+    --color-border: #E8E8E8;
+
+    /* Tipografía */
+    --font-title: 'Oxanium', sans-serif;
+    --font-body: 'Inter', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--color-bg);
+    color: var(--color-text-main);
+    font-family: var(--font-body);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 40px 20px;
+    overflow-x: hidden;
+}
+
+/* 1. CONTENEDOR PRINCIPAL */
+.dashboard-container {
+    width: 100%;
+    max-width: 1400px;
+    min-height: 85vh;
+    background: var(--color-bg);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 50px;
+    /* Aumentado para dar más aire entre zonas */
+    padding: 20px;
+}
+
+/* Decoraciones de esquinas */
+.corner-decoration {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    z-index: -1;
+    opacity: 0.8;
+}
+
+.corner-decoration.top-right {
+    top: -10px;
+    right: -10px;
+    border-top: 3px solid var(--color-accent);
+    border-right: 3px solid var(--color-decorative);
+}
+
+.corner-decoration.bottom-left {
+    bottom: -10px;
+    left: -10px;
+    border-bottom: 3px solid var(--color-accent);
+    border-left: 3px solid var(--color-decorative);
+}
+
+/* --- 2. ZONA SUPERIOR (Header) --- */
+.header-zone {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: 10px;
+}
+
+.main-title {
+    font-family: var(--font-title);
+    font-size: clamp(2.5rem, 4vw, 4rem);
+    line-height: 1.1;
+    letter-spacing: -1px;
+}
+
+.main-title .highlight {
+    color: var(--color-accent);
+    font-weight: 800;
+}
+
+.main-title .black-text {
+    color: var(--color-text-main);
+    font-weight: 800;
+}
+
+.short-line {
+    width: 80px;
+    height: 5px;
+    background: linear-gradient(90deg, var(--color-accent), transparent);
+    margin: 20px 0;
+    border-radius: 4px;
+}
+
+.subtitle {
+    font-size: clamp(1rem, 1.5vw, 1.25rem);
+    color: var(--color-text-sec);
+    max-width: 850px;
+    font-weight: 400;
+    line-height: 1.6;
+}
+
+.subtitle .highlight {
+    color: var(--color-accent);
+    font-weight: 600;
+}
+
+/* --- 3. ZONA CENTRAL (Flujo de Proceso) --- */
+.flow-zone {
+    display: flex;
+    align-items: stretch;
+    justify-content: space-between;
+    gap: 25px;
+}
+
+.card {
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: 24px;
+    box-shadow: 0 10px 35px var(--color-shadow);
+    padding: 30px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    /* Eliminado overflow: hidden para permitir que salgan los decorativos */
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease;
+    z-index: 1;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 50px var(--color-shadow-heavy);
+    border-color: var(--color-accent-soft);
+    z-index: 2;
+    /* Para que al elevarse no quede detrás de otras tarjetas */
+}
+
+/* Cabeceras de tarjetas */
+.card-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 25px;
+    padding-right: 40px;
+    /* Evita que el texto choque con el icono flotante */
+}
+
+.step-badge {
+    flex-shrink: 0;
+    /* Evita que el badge se aplaste */
+    background-color: var(--color-accent);
+    color: var(--color-bg);
+    font-family: var(--font-title);
+    font-size: 1.2rem;
+    font-weight: 800;
+    padding: 8px 14px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(255, 85, 0, 0.3);
+}
+
+.step-title h4 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--color-text-main);
+    line-height: 1.2;
+}
+
+.step-title span {
+    font-size: 0.9rem;
+    color: var(--color-text-sec);
+    font-weight: 500;
+}
+
+/* Tarjeta 1: Prompt */
+.card-description {
+    font-size: 0.95rem;
+    color: var(--color-text-sec);
+    margin-bottom: 15px;
+}
+
+.prompt-box {
+    background: var(--color-decorative);
+    border-left: 4px solid var(--color-accent);
+    border-radius: 12px;
+    padding: 20px;
+    font-size: 0.95rem;
+    color: var(--color-text-main);
+    line-height: 1.6;
+    flex-grow: 1;
+    font-style: italic;
+    word-break: break-word;
+    /* Evita que el texto rompa el contenedor */
+}
+
+.card-icons-inline {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+    color: var(--color-accent);
+    font-size: 1.2rem;
+    flex-wrap: wrap;
+    /* Por si los iconos no caben en una línea */
+}
+
+/* Flechas de Transición */
+.transition-arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    /* Ancho fijo ligeramente menor */
+    flex-shrink: 0;
+    /* CRÍTICO: Evita que la flecha se aplaste o desaparezca */
+    position: relative;
+    color: var(--color-accent);
+}
+
+.transition-arrow .dots {
+    width: 100%;
+    height: 4px;
+    border-bottom: 4px dashed var(--color-accent);
+    opacity: 0.4;
+}
+
+.transition-arrow .arrow-head {
+    position: absolute;
+    right: -10px;
+    font-size: 1.4rem;
+}
+
+/* Tarjeta 2: Proceso (Red flotante y carrusel) */
+.floating-network {
+    position: absolute;
+    top: -15px;
+    /* Ajustado para que no suba demasiado y se alinee bien */
+    right: 15px;
+    /* Ajustado */
+    display: flex;
+    gap: 10px;
+    color: var(--color-accent);
+    font-size: 1.1rem;
+    opacity: 0.95;
+    background: var(--color-bg);
+    padding: 8px 12px;
+    border-radius: 20px;
+    box-shadow: 0 4px 15px var(--color-shadow);
+    border: 1px solid var(--color-border);
+}
+
+.variations-box {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 25px;
+}
+
+.thumbnails-container {
+    display: flex;
+    gap: 12px;
+    /* Reducido un poco para pantallas medianas */
+    height: 170px;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.thumbnail {
+    width: 30%;
+    max-width: 70px;
+    height: 120px;
+    background: linear-gradient(180deg, var(--color-decorative) 0%, #E0E0E0 100%);
+    border-radius: 12px;
+    opacity: 0.6;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.thumbnail.active-thumb {
+    height: 160px;
+    max-width: 90px;
+    width: 40%;
+    opacity: 1;
+    background: linear-gradient(135deg, var(--color-accent-soft) 0%, #FFD6BA 100%);
+    border: 2px solid var(--color-accent);
+    box-shadow: 0 10px 25px rgba(255, 85, 0, 0.2);
+}
+
+.carousel-indicators {
+    display: flex;
+    gap: 10px;
+}
+
+.carousel-indicators .dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--color-border);
+    transition: background 0.3s ease;
+}
+
+.carousel-indicators .dot.active {
+    background: var(--color-accent);
+}
+
+/* Tarjeta 3: Resultado */
+.result-content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    height: 100%;
+}
+
+.final-flyer {
+    flex: 1;
+    min-height: 180px;
+    /* Evita que desaparezca si está vacío */
+    background: linear-gradient(135deg, var(--color-accent-soft) 0%, var(--color-decorative) 100%);
+    border-radius: 18px;
+    box-shadow: inset 0 0 0 2px rgba(255, 85, 0, 0.1);
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.flyer-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 18px; /* Opcional, el overflow hidden del padre ya lo controla, pero es un fallback */
+}
+
+.result-checks ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.result-checks li {
+    font-size: 0.9rem;
+    color: var(--color-text-main);
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-weight: 500;
+    line-height: 1.4;
+}
+
+.result-checks svg {
+    color: var(--color-accent);
+    font-size: 1.2rem;
+    flex-shrink: 0;
+    /* Evita que el check se encoja */
+    margin-top: 2px;
+}
+
+/* --- 4. ZONA INFERIOR (Footer) --- */
+.footer-zone {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+/* Barra de habilidades */
+.skills-bar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px 25px;
+    background: var(--color-bg);
+    border-radius: 20px;
+    padding: 25px 35px;
+    box-shadow: 0 8px 30px var(--color-shadow);
+    border: 1px solid var(--color-border);
+}
+
+.skill-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.95rem;
+    color: var(--color-text-sec);
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.skill-item:hover {
+    color: var(--color-accent);
+}
+
+.skill-item svg {
+    color: var(--color-accent);
+    font-size: 1.1rem;
+}
+
+/* Acciones Inferiores (Mensaje y CTA) */
+.bottom-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    gap: 30px;
+}
+
+.message-card {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    background: var(--color-bg);
+    padding: 25px 35px;
+    border-radius: 24px;
+    border: 1px solid var(--color-border);
+    flex: 1.5;
+    box-shadow: 0 5px 20px var(--color-shadow);
+}
+
+.user-icon {
+    font-size: 1.8rem;
+    color: var(--color-accent);
+    background: var(--color-accent-soft);
+    padding: 18px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    /* CRÍTICO: Evita que el círculo se vuelva un óvalo */
+    width: 65px;
+    height: 65px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.message-card p {
+    font-size: 1.1rem;
+    color: var(--color-text-main);
+    font-weight: 400;
+    line-height: 1.5;
+}
+
+.message-card .highlight {
+    color: var(--color-accent);
+    font-weight: 700;
+}
+
+.cta-signature {
+    background: linear-gradient(135deg, var(--color-accent) 0%, #E64D00 100%);
+    color: var(--color-bg);
+    padding: 25px 40px;
+    border-radius: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex: 1;
+    box-shadow: 0 15px 35px rgba(255, 85, 0, 0.25);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+.cta-signature:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 45px rgba(255, 85, 0, 0.35);
+}
+
+.cta-question {
+    font-size: 1.05rem;
+    font-weight: 500;
+    opacity: 0.9;
+    margin-bottom: 8px;
+}
+
+.cta-action {
+    font-size: 1.3rem;
+    font-family: var(--font-title);
+    font-weight: 800;
+    line-height: 1.2;
+}
+
+/* --- 5. RESPONSIVE Y MEDIA QUERIES --- */
+
+/* Pantallas medianas y Laptops pequeñas (hasta 1200px) */
+@media (max-width: 1200px) {
+    .flow-zone {
+        gap: 15px;
+    }
+
+    .card {
+        padding: 20px;
+    }
+
+    .card-header {
+        padding-right: 0;
+    }
+
+    .floating-network {
+        position: relative;
+        /* Lo pasamos a relativo para que no choque con nada */
+        top: 0;
+        right: 0;
+        margin-bottom: 15px;
+        align-self: flex-end;
+    }
+
+    .transition-arrow {
+        width: 25px;
+    }
+
+    .message-card {
+        padding: 20px;
+    }
+}
+
+/* Tablets (hasta 992px) */
+@media (max-width: 992px) {
+    .dashboard-container {
+        gap: 40px;
+    }
+
+    .flow-zone {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .card {
+        width: 100%;
+        max-width: 600px;
+    }
+
+    .transition-arrow {
+        transform: rotate(90deg);
+        margin: 20px 0;
+        width: 60px;
+    }
+
+    .transition-arrow .arrow-head {
+        right: -10px;
+    }
+
+    .bottom-actions {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .cta-signature {
+        width: 100%;
+        text-align: center;
+        align-items: center;
+    }
+}
+
+/* Móviles (hasta 768px) */
+@media (max-width: 768px) {
+    .main-title {
+        font-size: 2.2rem;
+    }
+
+    .message-card {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .skills-bar {
+        padding: 15px;
+        gap: 10px 15px;
+    }
+
+    .skill-item {
+        font-size: 0.85rem;
+    }
+}
