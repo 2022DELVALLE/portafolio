@@ -24,7 +24,7 @@ import finalFlyerImage from '../../assets/images/final.jpeg';
 
 const PortfolioDashboard = () => {
     return (
-        <div className="dashboard-container">
+        <div className="dashboard-container" id="portafolio">
             {/* Elementos decorativos esquinas */}
             <div className="corner-decoration top-right"></div>
             <div className="corner-decoration bottom-left"></div>

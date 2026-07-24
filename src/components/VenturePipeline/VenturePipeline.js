@@ -114,7 +114,7 @@ const VenturePipeline = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
 
     return (
-        <section className="venture">
+        <section className="venture" id="ventures">
 
             {/* Elementos Decorativos */}
             <div className="venture__decoration venture__decoration--top-right"></div>

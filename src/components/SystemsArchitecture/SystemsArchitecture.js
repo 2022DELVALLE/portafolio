@@ -25,7 +25,7 @@ import {
 
 const SystemsArchitecture = () => {
     return (
-        <section className="architecture">
+        <section className="architecture" id="arquitectura">
             {/* Fondo Decorativo: Nodos y Órbitas */}
             <div className="architecture__background">
                 <div className="architecture__orbit architecture__orbit--1"></div>

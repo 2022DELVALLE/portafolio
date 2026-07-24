@@ -16,7 +16,7 @@ import miFoto from '../../assets/images/fotoperfil.png';
 
 const Hero = () => {
     return (
-        <section className="hero">
+        <section className="hero" id="inicio">
 
             <div className="hero__decoration hero__decoration--top-left"></div>
             <div className="hero__decoration hero__decoration--bottom-right"></div>

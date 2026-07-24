@@ -1,4 +1,5 @@
 import React from 'react';
+import Navbar from './components/Navbar/Navbar';
 import Hero from './components/Hero/Hero';
 import VenturePipeline from './components/VenturePipeline/VenturePipeline';
 import SystemsArchitecture from './components/SystemsArchitecture/SystemsArchitecture';
@@ -8,6 +9,7 @@ import Portada from './components/Portada/PortfolioDashboard';
 function App() {
   return (
     <div style={{ backgroundColor: '#FFFFFF', minHeight: '100vh' }}>
+      <Navbar />
       <Hero />
       <VenturePipeline />
       <SystemsArchitecture />

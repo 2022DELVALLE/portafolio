@@ -1,0 +1,126 @@
+/* =========================================
+   NAVBAR — Misma identidad visual que Hero
+   ========================================= */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: var(--color-bg);
+    box-shadow: 0 4px 20px var(--color-shadow);
+    z-index: 1000;
+    font-family: var(--font-body);
+    box-sizing: border-box;
+}
+
+.navbar__container {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 2vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 70px;
+}
+
+.navbar__brand {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+    font-family: var(--font-title);
+    font-weight: 800;
+    font-size: clamp(16px, 1.2vw, 22px);
+    cursor: pointer;
+    user-select: none;
+}
+
+.navbar__brand--orange {
+    color: var(--color-accent);
+}
+
+.navbar__brand--dark {
+    color: var(--color-text-main);
+}
+
+.navbar__links {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar__link {
+    background: none;
+    border: none;
+    font-family: var(--font-body);
+    font-size: clamp(13px, 0.85vw, 15px);
+    font-weight: 600;
+    color: var(--color-text-sec);
+    padding: 8px 18px;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.navbar__link:hover {
+    color: var(--color-accent);
+    background: var(--color-accent-soft);
+}
+
+.navbar__link--active {
+    color: var(--color-accent);
+    background: var(--color-accent-soft);
+    font-weight: 700;
+}
+
+/* Toggle button (móvil) */
+.navbar__toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: var(--color-text-main);
+    cursor: pointer;
+    padding: 4px;
+}
+
+/* =========================================
+   RESPONSIVE
+   ========================================= */
+@media (max-width: 768px) {
+    .navbar__toggle {
+        display: block;
+    }
+
+    .navbar__links {
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        flex-direction: column;
+        background: var(--color-bg);
+        box-shadow: 0 8px 20px var(--color-shadow);
+        padding: 16px 0;
+        gap: 4px;
+        transform: translateY(-110%);
+        opacity: 0;
+        pointer-events: none;
+        transition: all 0.3s ease;
+    }
+
+    .navbar__links--open {
+        transform: translateY(0);
+        opacity: 1;
+        pointer-events: all;
+    }
+
+    .navbar__link {
+        width: 100%;
+        text-align: center;
+        padding: 12px 0;
+        border-radius: 0;
+    }
+}
