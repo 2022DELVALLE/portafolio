@@ -1,21 +1,29 @@
 import React from 'react';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Navbar from './components/Navbar/Navbar';
 import Hero from './components/Hero/Hero';
 import VenturePipeline from './components/VenturePipeline/VenturePipeline';
 import SystemsArchitecture from './components/SystemsArchitecture/SystemsArchitecture';
 import Portada from './components/Portada/PortfolioDashboard';
-// Aquí hemos eliminado todo el código basura anterior. 
-// Solo importamos y renderizamos los componentes necesarios.
+import FinancialCaseStudy from './components/FinancialCaseStudy/FinancialCaseStudy';
+import FinancialModelViewer from './components/FinancialModelViewer/FinancialModelViewer';
+
 function App() {
   return (
-    <div style={{ backgroundColor: '#FFFFFF', minHeight: '100vh' }}>
-      <Navbar />
-      <Hero />
-      <VenturePipeline />
-      <SystemsArchitecture />
-      <Portada />
-
-    </div>
+    <BrowserRouter>
+      <div style={{ backgroundColor: '#FFFFFF', minHeight: '100vh' }}>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Navigate to="/home" replace />} />
+          <Route path="/home" element={<Hero />} />
+          <Route path="/ventures" element={<VenturePipeline />} />
+          <Route path="/arquitectura" element={<SystemsArchitecture />} />
+          <Route path="/portafolio" element={<Portada />} />
+          <Route path="/case-study" element={<FinancialCaseStudy />} />
+          <Route path="/modelo-financiero" element={<FinancialModelViewer />} />
+        </Routes>
+      </div>
+    </BrowserRouter>
   );
 }
 

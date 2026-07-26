@@ -1,54 +1,51 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import './Navbar.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faXmark } from '@fortawesome/free-solid-svg-icons';
 
-const sections = [
-    { id: 'inicio', label: 'Inicio' },
-    { id: 'ventures', label: 'Ventures' },
-    { id: 'arquitectura', label: 'Arquitectura' },
-    { id: 'portafolio', label: 'Portafolio' },
+const routes = [
+    { path: '/home', label: 'Inicio' },
+    { path: '/ventures', label: 'Ventures' },
+    { path: '/arquitectura', label: 'Arquitectura' },
+    { path: '/portafolio', label: 'Portafolio' },
+    { path: '/case-study', label: 'Case Study' },
+    { path: '/modelo-financiero', label: 'Modelo Fin.' },
 ];
 
 const Navbar = () => {
-    const [activeSection, setActiveSection] = useState('inicio');
+    const navigate = useNavigate();
+    const location = useLocation();
     const [menuOpen, setMenuOpen] = useState(false);
+    const navbarRef = useRef(null);
 
-    const scrollTo = (id) => {
-        const el = document.getElementById(id);
-        if (el) {
-            el.scrollIntoView({ behavior: 'smooth' });
-        }
+    const isActive = (path) => location.pathname === path;
+
+    const handleNavigate = (path) => {
+        navigate(path);
         setMenuOpen(false);
     };
 
+    const closeMenuOnEscape = (e) => {
+        if (e.key === 'Escape' && menuOpen) {
+            setMenuOpen(false);
+            navbarRef.current?.querySelector('.navbar__toggle')?.focus();
+        }
+    };
+
     useEffect(() => {
-        const handleScroll = () => {
-            const offsets = sections.map((s) => {
-                const el = document.getElementById(s.id);
-                return { id: s.id, top: el ? el.offsetTop - 100 : 0 };
-            });
+        document.addEventListener('keydown', closeMenuOnEscape);
+        return () => document.removeEventListener('keydown', closeMenuOnEscape);
+    }, [menuOpen]);
 
-            const scrollY = window.scrollY;
-            let current = 'inicio';
-
-            for (let i = offsets.length - 1; i >= 0; i--) {
-                if (scrollY >= offsets[i].top) {
-                    current = offsets[i].id;
-                    break;
-                }
-            }
-            setActiveSection(current);
-        };
-
-        window.addEventListener('scroll', handleScroll);
-        return () => window.removeEventListener('scroll', handleScroll);
-    }, []);
+    useEffect(() => {
+        setMenuOpen(false);
+    }, [location.pathname]);
 
     return (
-        <nav className="navbar">
+        <nav className="navbar" ref={navbarRef} aria-label="Navegación principal">
             <div className="navbar__container">
-                <div className="navbar__brand" onClick={() => scrollTo('inicio')}>
+                <div className="navbar__brand" onClick={() => handleNavigate('/home')}>
                     <span className="navbar__brand--orange">KENYO</span>
                     <span className="navbar__brand--dark">DEL VALLE</span>
                 </div>
@@ -56,19 +53,26 @@ const Navbar = () => {
                 <button
                     className="navbar__toggle"
                     onClick={() => setMenuOpen(!menuOpen)}
-                    aria-label="Toggle menu"
+                    aria-label={menuOpen ? 'Cerrar menú' : 'Abrir menú'}
+                    aria-expanded={menuOpen}
+                    aria-controls="navbar-links"
                 >
                     <FontAwesomeIcon icon={menuOpen ? faXmark : faBars} />
                 </button>
 
-                <ul className={`navbar__links ${menuOpen ? 'navbar__links--open' : ''}`}>
-                    {sections.map((s) => (
-                        <li key={s.id}>
+                <ul
+                    id="navbar-links"
+                    className={`navbar__links ${menuOpen ? 'navbar__links--open' : ''}`}
+                    aria-hidden={!menuOpen}
+                >
+                    {routes.map((r) => (
+                        <li key={r.path}>
                             <button
-                                className={`navbar__link ${activeSection === s.id ? 'navbar__link--active' : ''}`}
-                                onClick={() => scrollTo(s.id)}
+                                className={`navbar__link ${isActive(r.path) ? 'navbar__link--active' : ''}`}
+                                onClick={() => handleNavigate(r.path)}
+                                aria-current={isActive(r.path) ? 'page' : undefined}
                             >
-                                {s.label}
+                                {r.label}
                             </button>
                         </li>
                     ))}

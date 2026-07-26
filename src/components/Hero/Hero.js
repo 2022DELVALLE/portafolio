@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './Hero.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
@@ -15,8 +15,29 @@ import { faLinkedin, faGithub } from '@fortawesome/free-brands-svg-icons';
 import miFoto from '../../assets/images/fotoperfil.png';
 
 const Hero = () => {
+    const [isImageLoaded, setIsImageLoaded] = useState(false);
+    const [reducedMotion, setReducedMotion] = useState(false);
+
+    useEffect(() => {
+        setIsImageLoaded(true);
+        const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+        setReducedMotion(mediaQuery.matches);
+
+        const handleMotionChange = (e) => {
+            setReducedMotion(e.matches);
+        };
+
+        mediaQuery.addEventListener('change', handleMotionChange);
+        return () => mediaQuery.removeEventListener('change', handleMotionChange);
+    }, []);
+
     return (
-        <section className="hero" id="inicio">
+        <section
+            className="hero"
+            id="inicio"
+            aria-labelledby="hero-title"
+            role="banner"
+        >
 
             <div className="hero__decoration hero__decoration--top-left"></div>
             <div className="hero__decoration hero__decoration--bottom-right"></div>
@@ -26,17 +47,17 @@ const Hero = () => {
                 {/* BLOQUE IZQUIERDO: Identidad y Propuesta de Valor */}
                 <div className="hero__left">
                     <div className="hero__identity">
-                        <h1 className="hero__name">
+                        <h1 className="hero__name" id="hero-title">
                             <span className="hero__name--orange">KENYO</span><br />
-                            <span className="hero__name--dark">DEL VALLE OSORIO</span>
+                            <span className="hero__name--dark">DEL VALLE</span>
                         </h1>
                         {/* Rol de alto nivel enfocado en Negocios y Creación de Startups */}
                         <h2 className="hero__role">Estratega en modelos de ingresos y expansión comercial</h2>
                         <p className="hero__description">
-                            Construyo el futuro de los negocios tecnológicos. Fusiono la estrategia financiera,
-                            marcos legales corporativos y levantamiento de capital con el poder técnico
-                            de la Inteligencia Artificial, Automatización y el Desarrollo Full Stack
-                            para crear y escalar Startups de alto impacto.
+                            Diseño modelos de negocio escalables que integran estrategia empresarial,
+                            finanzas, tecnología e Inteligencia Artificial. Transformo ideas en
+                            productos digitales y startups sostenibles mediante automatización,
+                            desarrollo Full Stack y soluciones orientadas al crecimiento.
                         </p>
                     </div>
 
