@@ -4,7 +4,7 @@ import Navbar from './components/Navbar/Navbar';
 import Hero from './components/Hero/Hero';
 import VenturePipeline from './components/VenturePipeline/VenturePipeline';
 import SystemsArchitecture from './components/SystemsArchitecture/SystemsArchitecture';
-import Portada from './components/Portada/PortfolioDashboard';
+import Portada from './components/VisualAI/visual_ai';
 import FinancialCaseStudy from './components/FinancialCaseStudy/FinancialCaseStudy';
 import FinancialModelViewer from './components/FinancialModelViewer/FinancialModelViewer';
 
@@ -18,7 +18,7 @@ function App() {
           <Route path="/home" element={<Hero />} />
           <Route path="/ventures" element={<VenturePipeline />} />
           <Route path="/arquitectura" element={<SystemsArchitecture />} />
-          <Route path="/portafolio" element={<Portada />} />
+          <Route path="/visual-ia" element={<Portada />} />
           <Route path="/case-study" element={<FinancialCaseStudy />} />
           <Route path="/modelo-financiero" element={<FinancialModelViewer />} />
         </Routes>

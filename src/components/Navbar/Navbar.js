@@ -3,12 +3,13 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import './Navbar.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faXmark } from '@fortawesome/free-solid-svg-icons';
+import miFoto from '../../assets/images/fotoperfil.png';
 
 const routes = [
     { path: '/home', label: 'Inicio' },
     { path: '/ventures', label: 'Ventures' },
     { path: '/arquitectura', label: 'Arquitectura' },
-    { path: '/portafolio', label: 'Portafolio' },
+    { path: '/visual-ia', label: 'Visual IA' },
     { path: '/case-study', label: 'Case Study' },
     { path: '/modelo-financiero', label: 'Modelo Fin.' },
 ];
@@ -46,6 +47,7 @@ const Navbar = () => {
         <nav className="navbar" ref={navbarRef} aria-label="Navegación principal">
             <div className="navbar__container">
                 <div className="navbar__brand" onClick={() => handleNavigate('/home')}>
+                    <img src={miFoto} alt="" className="navbar__brand-img" />
                     <span className="navbar__brand--orange">KENYO</span>
                     <span className="navbar__brand--dark">DEL VALLE</span>
                 </div>

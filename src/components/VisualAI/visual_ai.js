@@ -1,8 +1,6 @@
 import React from 'react';
-// Importación principal de FontAwesome solicitada
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-// Importar los iconos específicos (Solid)
 import {
     faAlignLeft, faLink, faPenNib, faCopyright, faChevronRight,
     faRobot, faMicrochip, faDatabase, faSliders, faCircleCheck,
@@ -10,26 +8,18 @@ import {
     faTag, faChartLine, faCamera, faPalette, faImage, faUser
 } from '@fortawesome/free-solid-svg-icons';
 
-// Importar los iconos específicos (Regular)
-// import { faImage, faUser } from '@fortawesome/free-regular-svg-icons';
-
-// Importar los iconos específicos (Brands)
 import { faNeos } from '@fortawesome/free-brands-svg-icons';
 
-// Asegúrate de importar el archivo CSS que contiene las variables y estilos
-import './PortfolioDashboard.css';
+import './visual_ai.css';
 
-// Importar la imagen final
 import finalFlyerImage from '../../assets/images/final.jpeg';
 
 const PortfolioDashboard = () => {
     return (
-        <div className="dashboard-container" id="portafolio">
-            {/* Elementos decorativos esquinas */}
+        <div className="dashboard-container" id="visual-ia">
             <div className="corner-decoration top-right"></div>
             <div className="corner-decoration bottom-left"></div>
 
-            {/* ZONA SUPERIOR (20%) */}
             <header className="header-zone">
                 <h1 className="main-title">
                     <span className="highlight">MI PORTAFOLIO</span><br />
@@ -41,10 +31,7 @@ const PortfolioDashboard = () => {
                 </p>
             </header>
 
-            {/* ZONA CENTRAL: Flujo Principal (60%) */}
             <section className="flow-zone">
-
-                {/* Tarjeta 1: Entrada */}
                 <article className="card">
                     <div className="card-header">
                         <div className="step-badge">01</div>
@@ -68,13 +55,11 @@ const PortfolioDashboard = () => {
                     </div>
                 </article>
 
-                {/* Flecha de transición */}
                 <div className="transition-arrow">
                     <div className="dots"></div>
                     <FontAwesomeIcon icon={faChevronRight} className="arrow-head" />
                 </div>
 
-                {/* Tarjeta 2: Proceso IA */}
                 <article className="card process-card">
                     <div className="floating-network">
                         <FontAwesomeIcon icon={faRobot} />
@@ -104,13 +89,11 @@ const PortfolioDashboard = () => {
                     </div>
                 </article>
 
-                {/* Flecha de transición */}
                 <div className="transition-arrow">
                     <div className="dots"></div>
                     <FontAwesomeIcon icon={faChevronRight} className="arrow-head" />
                 </div>
 
-                {/* Tarjeta 3: Resultado Final */}
                 <article className="card result-card">
                     <div className="card-header">
                         <div className="step-badge">03</div>
@@ -132,13 +115,9 @@ const PortfolioDashboard = () => {
                         </div>
                     </div>
                 </article>
-
             </section>
 
-            {/* ZONA INFERIOR (20%) */}
             <section className="footer-zone">
-
-                {/* Barra de habilidades */}
                 <div className="skills-bar">
                     <div className="skill-item"><FontAwesomeIcon icon={faTerminal} /> Prompt Engineering</div>
                     <div className="skill-item"><FontAwesomeIcon icon={faBrain} /> Midjourney</div>
@@ -152,7 +131,6 @@ const PortfolioDashboard = () => {
                     <div className="skill-item"><FontAwesomeIcon icon={faPalette} /> Color</div>
                 </div>
 
-                {/* Mensaje y CTA */}
                 <div className="bottom-actions">
                     <div className="message-card">
                         <FontAwesomeIcon icon={faUser} className="user-icon" />
@@ -164,7 +142,6 @@ const PortfolioDashboard = () => {
                         <span className="cta-action">Convirtámosla en una identidad visual.</span>
                     </div>
                 </div>
-
             </section>
         </div>
     );
