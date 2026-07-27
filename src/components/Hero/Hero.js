@@ -3,13 +3,20 @@ import './Hero.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 // 1. Iconos seleccionados estratégicamente para Negocios, IA y Finanzas
-import {
-    faBrain, faGears,
-    faEnvelope, faLocationDot, faClock,
-    faUsers, faRocket, faLightbulb, faPuzzlePiece,
-    faChartLine, faHandshakeSimple, faScaleBalanced
-} from '@fortawesome/free-solid-svg-icons';
-import { faLinkedin, faGithub } from '@fortawesome/free-brands-svg-icons';
+import { faBrain } from '@fortawesome/free-solid-svg-icons/faBrain';
+import { faGears } from '@fortawesome/free-solid-svg-icons/faGears';
+import { faEnvelope } from '@fortawesome/free-solid-svg-icons/faEnvelope';
+import { faLocationDot } from '@fortawesome/free-solid-svg-icons/faLocationDot';
+import { faClock } from '@fortawesome/free-solid-svg-icons/faClock';
+import { faUsers } from '@fortawesome/free-solid-svg-icons/faUsers';
+import { faRocket } from '@fortawesome/free-solid-svg-icons/faRocket';
+import { faLightbulb } from '@fortawesome/free-solid-svg-icons/faLightbulb';
+import { faPuzzlePiece } from '@fortawesome/free-solid-svg-icons/faPuzzlePiece';
+import { faChartLine } from '@fortawesome/free-solid-svg-icons/faChartLine';
+import { faHandshakeSimple } from '@fortawesome/free-solid-svg-icons/faHandshakeSimple';
+import { faScaleBalanced } from '@fortawesome/free-solid-svg-icons/faScaleBalanced';
+import { faLinkedin } from '@fortawesome/free-brands-svg-icons/faLinkedin';
+import { faGithub } from '@fortawesome/free-brands-svg-icons/faGithub';
 
 // 2. Importación de foto de perfil
 import miFoto from '../../assets/images/fotoperfil.png';

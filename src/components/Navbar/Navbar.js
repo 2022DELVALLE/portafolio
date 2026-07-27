@@ -2,7 +2,8 @@ import React, { useState, useRef, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import './Navbar.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBars, faXmark } from '@fortawesome/free-solid-svg-icons';
+import { faBars } from '@fortawesome/free-solid-svg-icons/faBars';
+import { faXmark } from '@fortawesome/free-solid-svg-icons/faXmark';
 import miFoto from '../../assets/images/fotoperfil.png';
 
 const routes = [

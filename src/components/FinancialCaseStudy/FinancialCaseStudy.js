@@ -221,79 +221,79 @@ export default function FinancialCaseStudy() {
 
   return (
     <section className="fcs" id="case-study">
-      <div className="fcs-wrap">
-        <p className="fcs-eyebrow">Case study \u00b7 Modelo financiero SGIA</p>
+      <div className="fcs__wrap">
+        <p className="fcs__eyebrow">Case study · Modelo financiero SGIA</p>
 
-        <div className="fcs-hero">
+        <div className="fcs__hero">
           <div>
-            <h2 className="fcs-title">
+            <h2 className="fcs__title">
               Modelar si el negocio <em>sobrevive</em>, no solo si funciona.
             </h2>
-            <p className="fcs-lede">
-              Un recorrido de 24 meses por las decisiones financieras detr\u00e1s
-              de SGIA \u2014 de S/. 3,000 de capital fundador a un negocio con
-              98% de margen bruto y runway propio. Cada m\u00f3dulo abajo est\u00e1
+            <p className="fcs__lede">
+              Un recorrido de 24 meses por las decisiones financieras detrás
+              de SGIA — de S/. 3,000 de capital fundador a un negocio con
+              98% de margen bruto y runway propio. Cada módulo abajo está
               construido con las cifras reales del modelo, no con ejemplos
-              gen\u00e9ricos.
+              genéricos.
             </p>
           </div>
-          <div className="fcs-headline-stats">
-            <div className="fcs-hstat">
-              <span className="fcs-hstat-value">S/. 14.9k</span>
-              <span className="fcs-hstat-label">capital total, 3 rondas</span>
+          <div className="fcs__headline-stats">
+            <div className="fcs__hstat">
+              <span className="fcs__hstat-value">S/. 14.9k</span>
+              <span className="fcs__hstat-label">capital total, 3 rondas</span>
             </div>
-            <div className="fcs-hstat">
-              <span className="fcs-hstat-value">Mes 10</span>
-              <span className="fcs-hstat-label">break-even operativo</span>
+            <div className="fcs__hstat">
+              <span className="fcs__hstat-value">Mes 10</span>
+              <span className="fcs__hstat-label">break-even operativo</span>
             </div>
-            <div className="fcs-hstat">
-              <span className="fcs-hstat-value">16.7x</span>
-              <span className="fcs-hstat-label">LTV / CAC en madurez</span>
+            <div className="fcs__hstat">
+              <span className="fcs__hstat-value">16.7x</span>
+              <span className="fcs__hstat-label">LTV / CAC en madurez</span>
             </div>
           </div>
         </div>
 
-        <div className="fcs-timeline" aria-hidden="true">
-          <span className="fcs-timeline-label">Jul 2026</span>
-          <div className="fcs-timeline-track" />
-          <span className="fcs-timeline-label">Jun 2028</span>
+        <div className="fcs__timeline" aria-hidden="true">
+          <span className="fcs__timeline-label">Jul 2026</span>
+          <div className="fcs__timeline-track" />
+          <span className="fcs__timeline-label">Jun 2028</span>
         </div>
 
-        <div className="fcs-body">
-          <nav className="fcs-nav" aria-label="M\u00f3dulos de an\u00e1lisis">
+        <div className="fcs__body">
+          <nav className="fcs__nav" aria-label="Módulos de análisis">
             {modules.map((m) => (
               <button
                 key={m.id}
-                className={`fcs-nav-item ${m.id === openId ? "active" : ""}`}
+                className={`fcs__nav-item ${m.id === openId ? "fcs__nav-item--active" : ""}`}
                 onClick={() => setOpenId(m.id)}
                 aria-current={m.id === openId}
               >
-                <span className="fcs-nav-kicker">{m.kicker}</span>
-                <span className="fcs-nav-title">{m.title}</span>
+                <span className="fcs__nav-kicker">{m.kicker}</span>
+                <span className="fcs__nav-title">{m.title}</span>
               </button>
             ))}
           </nav>
 
-          <div className="fcs-panel">
-            <div className="fcs-panel-head">
-              <h3 className="fcs-panel-title">{activeModule.title}</h3>
-              <div className="fcs-panel-stat">
-                <span className="fcs-panel-stat-value">{activeModule.stat}</span>
-                <span className="fcs-panel-stat-label">{activeModule.statLabel}</span>
+          <div className="fcs__panel">
+            <div className="fcs__panel-head">
+              <h3 className="fcs__panel-title">{activeModule.title}</h3>
+              <div className="fcs__panel-stat">
+                <span className="fcs__panel-stat-value">{activeModule.stat}</span>
+                <span className="fcs__panel-stat-label">{activeModule.statLabel}</span>
               </div>
             </div>
 
-            <p className="fcs-panel-body">{activeModule.body}</p>
+            <p className="fcs__panel-body">{activeModule.body}</p>
 
-            <div className="fcs-chart-box">
+            <div className="fcs__chart-box">
               <ChartFrame type={activeModule.chartType} />
             </div>
           </div>
         </div>
 
-        <div className="fcs-foot">
-          <span className="fcs-foot-note">
-            Fuente: modelo financiero SGIA v2, 24 meses (jul-26 \u2192 jun-28).
+        <div className="fcs__foot">
+          <span className="fcs__foot-note">
+            Fuente: modelo financiero SGIA v2, 24 meses (jul-26 → jun-28).
             Cifras en soles peruanos (S/.).
           </span>
         </div>

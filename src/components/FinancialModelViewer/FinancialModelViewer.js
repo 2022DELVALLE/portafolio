@@ -77,30 +77,30 @@ export default function FinancialModelViewer() {
 
   return (
     <section className="fmv" id="modelo-financiero">
-      <div className="fmv-wrap">
-        <p className="fmv-eyebrow">Modelo financiero \u00b7 SGIA</p>
+      <div className="fmv__wrap">
+        <p className="fmv__eyebrow">Modelo financiero \u00b7 SGIA</p>
 
-        <div className="fmv-head">
+        <div className="fmv__head">
           <div>
-            <h2 className="fmv-title">
+            <h2 className="fmv__title">
               El modelo completo, a la vista \u2014 sin salir con una copia.
             </h2>
-            <p className="fmv-lede">
+            <p className="fmv__lede">
               5 hojas, 24 meses, f\u00f3rmulas encadenadas de extremo a extremo.
               Explora el resumen de cada hoja abajo, o abre la vista completa
               en modo solo lectura.
             </p>
           </div>
-          <span className="fmv-badge">Solo lectura \u00b7 sin descarga</span>
+          <span className="fmv__badge">Solo lectura \u00b7 sin descarga</span>
         </div>
 
-        <div className="fmv-tabs" role="tablist" aria-label="Hojas del modelo">
+        <div className="fmv__tabs" role="tablist" aria-label="Hojas del modelo">
           {sheets.map((s) => (
             <button
               key={s.id}
               role="tab"
               aria-selected={s.id === activeSheet}
-              className={`fmv-tab ${s.id === activeSheet ? "active" : ""}`}
+              className={`fmv__tab ${s.id === activeSheet ? "fmv__tab--active" : ""}`}
               onClick={() => setActiveSheet(s.id)}
             >
               {s.name}
@@ -108,23 +108,23 @@ export default function FinancialModelViewer() {
           ))}
         </div>
 
-        <div className="fmv-panel">
-          <div className="fmv-panel-top">
-            <h3 className="fmv-sheet-name">{current.name}</h3>
-            <span className="fmv-sheet-rows">{current.rows}</span>
+        <div className="fmv__panel">
+          <div className="fmv__panel-top">
+            <h3 className="fmv__sheet-name">{current.name}</h3>
+            <span className="fmv__sheet-rows">{current.rows}</span>
           </div>
-          <p className="fmv-sheet-desc">{current.desc}</p>
+          <p className="fmv__sheet-desc">{current.desc}</p>
 
-          <div className="fmv-sample-grid">
+          <div className="fmv__sample-grid">
             {current.sample.map(([label, value]) => (
-              <div className="fmv-sample-cell" key={label}>
-                <div className="fmv-sample-label">{label}</div>
-                <div className="fmv-sample-value">{value}</div>
+              <div className="fmv__sample-cell" key={label}>
+                <div className="fmv__sample-label">{label}</div>
+                <div className="fmv__sample-value">{value}</div>
               </div>
             ))}
           </div>
 
-          <p className="fmv-watermark-note">
+          <p className="fmv__watermark-note">
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#999999" strokeWidth="2">
               <rect x="3" y="11" width="18" height="10" rx="2" />
               <path d="M7 11V7a5 5 0 0 1 10 0v4" />
@@ -132,12 +132,12 @@ export default function FinancialModelViewer() {
             Vista de solo resumen \u2014 cifras completas y f\u00f3rmulas en el modelo original.
           </p>
 
-          <div className="fmv-cta-row">
-            <button className="fmv-btn fmv-btn-primary" onClick={() => setShowEmbed((v) => !v)}>
+          <div className="fmv__cta-row">
+            <button className="fmv__btn fmv__btn--primary" onClick={() => setShowEmbed((v) => !v)}>
               {showEmbed ? "Ocultar hoja completa" : "Ver hoja completa embebida"}
             </button>
             <a
-              className="fmv-btn fmv-btn-ghost"
+              className="fmv__btn fmv__btn--ghost"
               href={DRIVE_CONFIG.viewLink}
               target="_blank"
               rel="noopener noreferrer"
@@ -147,18 +147,18 @@ export default function FinancialModelViewer() {
           </div>
 
           {showEmbed && (
-            <div className="fmv-embed-wrap">
-              <div className="fmv-embed-head">
+            <div className="fmv__embed-wrap">
+              <div className="fmv__embed-head">
                 <span>modelo_financiero_SGIA_v2 \u2014 vista en vivo</span>
                 <span>Descarga deshabilitada por el propietario</span>
               </div>
-              <div className="fmv-embed-frame">
+              <div className="fmv__embed-frame">
                 <iframe
                   src={DRIVE_CONFIG.embedSrc}
                   title="Modelo financiero SGIA \u2014 vista de solo lectura"
                   loading="lazy"
                 />
-                <div className="fmv-embed-shield" />
+                <div className="fmv__embed-shield" />
               </div>
             </div>
           )}

@@ -31,7 +31,7 @@ body {
     overflow-x: hidden;
 }
 
-.dashboard-container {
+.visual-ai {
     width: 100%;
     max-width: 1400px;
     min-height: 85vh;
@@ -44,7 +44,7 @@ body {
     padding: 20px;
 }
 
-.corner-decoration {
+.visual-ai__corner {
     position: absolute;
     width: 80px;
     height: 80px;
@@ -52,45 +52,45 @@ body {
     opacity: 0.8;
 }
 
-.corner-decoration.top-right {
+.visual-ai__corner--top-right {
     top: -10px;
     right: -10px;
     border-top: 3px solid var(--color-accent);
     border-right: 3px solid var(--color-decorative);
 }
 
-.corner-decoration.bottom-left {
+.visual-ai__corner--bottom-left {
     bottom: -10px;
     left: -10px;
     border-bottom: 3px solid var(--color-accent);
     border-left: 3px solid var(--color-decorative);
 }
 
-.header-zone {
+.visual-ai__header {
     display: flex;
     flex-direction: column;
     justify-content: center;
     padding-top: 10px;
 }
 
-.main-title {
+.visual-ai__title {
     font-family: var(--font-title);
     font-size: clamp(2.5rem, 4vw, 4rem);
     line-height: 1.1;
     letter-spacing: -1px;
 }
 
-.main-title .highlight {
+.visual-ai__highlight {
     color: var(--color-accent);
     font-weight: 800;
 }
 
-.main-title .black-text {
+.visual-ai__title-black {
     color: var(--color-text-main);
     font-weight: 800;
 }
 
-.short-line {
+.visual-ai__divider {
     width: 80px;
     height: 5px;
     background: linear-gradient(90deg, var(--color-accent), transparent);
@@ -98,7 +98,7 @@ body {
     border-radius: 4px;
 }
 
-.subtitle {
+.visual-ai__subtitle {
     font-size: clamp(1rem, 1.5vw, 1.25rem);
     color: var(--color-text-sec);
     max-width: 850px;
@@ -106,19 +106,14 @@ body {
     line-height: 1.6;
 }
 
-.subtitle .highlight {
-    color: var(--color-accent);
-    font-weight: 600;
-}
-
-.flow-zone {
+.visual-ai__flow {
     display: flex;
     align-items: stretch;
     justify-content: space-between;
     gap: 25px;
 }
 
-.card {
+.visual-ai__card {
     background: var(--color-bg);
     border: 1px solid var(--color-border);
     border-radius: 24px;
@@ -132,14 +127,14 @@ body {
     z-index: 1;
 }
 
-.card:hover {
+.visual-ai__card:hover {
     transform: translateY(-8px);
     box-shadow: 0 20px 50px var(--color-shadow-heavy);
     border-color: var(--color-accent-soft);
     z-index: 2;
 }
 
-.card-header {
+.visual-ai__card-header {
     display: flex;
     align-items: center;
     gap: 15px;
@@ -147,7 +142,7 @@ body {
     padding-right: 40px;
 }
 
-.step-badge {
+.visual-ai__step-badge {
     flex-shrink: 0;
     background-color: var(--color-accent);
     color: var(--color-bg);
@@ -159,26 +154,26 @@ body {
     box-shadow: 0 4px 15px rgba(255, 85, 0, 0.3);
 }
 
-.step-title h4 {
+.visual-ai__step-title h4 {
     font-size: 1.2rem;
     font-weight: 700;
     color: var(--color-text-main);
     line-height: 1.2;
 }
 
-.step-title span {
+.visual-ai__step-title span {
     font-size: 0.9rem;
     color: var(--color-text-sec);
     font-weight: 500;
 }
 
-.card-description {
+.visual-ai__card-desc {
     font-size: 0.95rem;
     color: var(--color-text-sec);
     margin-bottom: 15px;
 }
 
-.prompt-box {
+.visual-ai__prompt-box {
     background: var(--color-decorative);
     border-left: 4px solid var(--color-accent);
     border-radius: 12px;
@@ -191,7 +186,7 @@ body {
     word-break: break-word;
 }
 
-.card-icons-inline {
+.visual-ai__card-icons {
     display: flex;
     gap: 15px;
     margin-top: 20px;
@@ -200,7 +195,7 @@ body {
     flex-wrap: wrap;
 }
 
-.transition-arrow {
+.visual-ai__arrow {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -210,20 +205,20 @@ body {
     color: var(--color-accent);
 }
 
-.transition-arrow .dots {
+.visual-ai__arrow-dots {
     width: 100%;
     height: 4px;
     border-bottom: 4px dashed var(--color-accent);
     opacity: 0.4;
 }
 
-.transition-arrow .arrow-head {
+.visual-ai__arrow-head {
     position: absolute;
     right: -10px;
     font-size: 1.4rem;
 }
 
-.floating-network {
+.visual-ai__network {
     position: absolute;
     top: -15px;
     right: 15px;
@@ -239,7 +234,7 @@ body {
     border: 1px solid var(--color-border);
 }
 
-.variations-box {
+.visual-ai__variations {
     flex-grow: 1;
     display: flex;
     flex-direction: column;
@@ -248,7 +243,7 @@ body {
     gap: 25px;
 }
 
-.thumbnails-container {
+.visual-ai__thumbnails {
     display: flex;
     gap: 12px;
     height: 170px;
@@ -257,7 +252,7 @@ body {
     width: 100%;
 }
 
-.thumbnail {
+.visual-ai__thumbnail {
     width: 30%;
     max-width: 70px;
     height: 120px;
@@ -267,7 +262,7 @@ body {
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-.thumbnail.active-thumb {
+.visual-ai__thumbnail--active {
     height: 160px;
     max-width: 90px;
     width: 40%;
@@ -277,12 +272,12 @@ body {
     box-shadow: 0 10px 25px rgba(255, 85, 0, 0.2);
 }
 
-.carousel-indicators {
+.visual-ai__indicators {
     display: flex;
     gap: 10px;
 }
 
-.carousel-indicators .dot {
+.visual-ai__dot {
     width: 10px;
     height: 10px;
     border-radius: 50%;
@@ -290,18 +285,18 @@ body {
     transition: background 0.3s ease;
 }
 
-.carousel-indicators .dot.active {
+.visual-ai__dot--active {
     background: var(--color-accent);
 }
 
-.result-content {
+.visual-ai__result-content {
     display: flex;
     flex-direction: column;
     gap: 20px;
     height: 100%;
 }
 
-.final-flyer {
+.visual-ai__final-flyer {
     flex: 1;
     min-height: 180px;
     background: linear-gradient(135deg, var(--color-accent-soft) 0%, var(--color-decorative) 100%);
@@ -313,21 +308,21 @@ body {
     align-items: center;
 }
 
-.flyer-image {
+.visual-ai__flyer-image {
     width: 100%;
     height: 100%;
     object-fit: cover;
     border-radius: 18px;
 }
 
-.result-checks ul {
+.visual-ai__result-checks ul {
     list-style: none;
     display: flex;
     flex-direction: column;
     gap: 12px;
 }
 
-.result-checks li {
+.visual-ai__result-checks li {
     font-size: 0.9rem;
     color: var(--color-text-main);
     display: flex;
@@ -337,20 +332,20 @@ body {
     line-height: 1.4;
 }
 
-.result-checks svg {
+.visual-ai__result-checks svg {
     color: var(--color-accent);
     font-size: 1.2rem;
     flex-shrink: 0;
     margin-top: 2px;
 }
 
-.footer-zone {
+.visual-ai__footer {
     display: flex;
     flex-direction: column;
     gap: 30px;
 }
 
-.skills-bar {
+.visual-ai__skills {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -362,7 +357,7 @@ body {
     border: 1px solid var(--color-border);
 }
 
-.skill-item {
+.visual-ai__skill-item {
     display: flex;
     align-items: center;
     gap: 8px;
@@ -372,23 +367,23 @@ body {
     transition: color 0.3s ease;
 }
 
-.skill-item:hover {
+.visual-ai__skill-item:hover {
     color: var(--color-accent);
 }
 
-.skill-item svg {
+.visual-ai__skill-item svg {
     color: var(--color-accent);
     font-size: 1.1rem;
 }
 
-.bottom-actions {
+.visual-ai__actions {
     display: flex;
     justify-content: space-between;
     align-items: stretch;
     gap: 30px;
 }
 
-.message-card {
+.visual-ai__message {
     display: flex;
     align-items: center;
     gap: 25px;
@@ -400,7 +395,7 @@ body {
     box-shadow: 0 5px 20px var(--color-shadow);
 }
 
-.user-icon {
+.visual-ai__user-icon {
     font-size: 1.8rem;
     color: var(--color-accent);
     background: var(--color-accent-soft);
@@ -414,19 +409,19 @@ body {
     align-items: center;
 }
 
-.message-card p {
+.visual-ai__message p {
     font-size: 1.1rem;
     color: var(--color-text-main);
     font-weight: 400;
     line-height: 1.5;
 }
 
-.message-card .highlight {
+.visual-ai__message .visual-ai__highlight {
     color: var(--color-accent);
     font-weight: 700;
 }
 
-.cta-signature {
+.visual-ai__cta {
     background: linear-gradient(135deg, var(--color-accent) 0%, #E64D00 100%);
     color: var(--color-bg);
     padding: 25px 40px;
@@ -440,19 +435,19 @@ body {
     cursor: pointer;
 }
 
-.cta-signature:hover {
+.visual-ai__cta:hover {
     transform: translateY(-4px);
     box-shadow: 0 20px 45px rgba(255, 85, 0, 0.35);
 }
 
-.cta-question {
+.visual-ai__cta-question {
     font-size: 1.05rem;
     font-weight: 500;
     opacity: 0.9;
     margin-bottom: 8px;
 }
 
-.cta-action {
+.visual-ai__cta-action {
     font-size: 1.3rem;
     font-family: var(--font-title);
     font-weight: 800;
@@ -460,19 +455,19 @@ body {
 }
 
 @media (max-width: 1200px) {
-    .flow-zone {
+    .visual-ai__flow {
         gap: 15px;
     }
 
-    .card {
+    .visual-ai__card {
         padding: 20px;
     }
 
-    .card-header {
+    .visual-ai__card-header {
         padding-right: 0;
     }
 
-    .floating-network {
+    .visual-ai__network {
         position: relative;
         top: 0;
         right: 0;
@@ -480,46 +475,46 @@ body {
         align-self: flex-end;
     }
 
-    .transition-arrow {
+    .visual-ai__arrow {
         width: 25px;
     }
 
-    .message-card {
+    .visual-ai__message {
         padding: 20px;
     }
 }
 
 @media (max-width: 992px) {
-    .dashboard-container {
+    .visual-ai {
         gap: 40px;
     }
 
-    .flow-zone {
+    .visual-ai__flow {
         flex-direction: column;
         align-items: center;
     }
 
-    .card {
+    .visual-ai__card {
         width: 100%;
         max-width: 600px;
     }
 
-    .transition-arrow {
+    .visual-ai__arrow {
         transform: rotate(90deg);
         margin: 20px 0;
         width: 60px;
     }
 
-    .transition-arrow .arrow-head {
+    .visual-ai__arrow-head {
         right: -10px;
     }
 
-    .bottom-actions {
+    .visual-ai__actions {
         flex-direction: column;
         gap: 20px;
     }
 
-    .cta-signature {
+    .visual-ai__cta {
         width: 100%;
         text-align: center;
         align-items: center;
@@ -527,21 +522,21 @@ body {
 }
 
 @media (max-width: 768px) {
-    .main-title {
+    .visual-ai__title {
         font-size: 2.2rem;
     }
 
-    .message-card {
+    .visual-ai__message {
         flex-direction: column;
         text-align: center;
     }
 
-    .skills-bar {
+    .visual-ai__skills {
         padding: 15px;
         gap: 10px 15px;
     }
 
-    .skill-item {
+    .visual-ai__skill-item {
         font-size: 0.85rem;
     }
 }

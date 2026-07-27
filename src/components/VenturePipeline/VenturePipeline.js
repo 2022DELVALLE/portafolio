@@ -2,13 +2,21 @@ import React, { useState } from 'react';
 import './VenturePipeline.css';
 import PerfumePlaybookModal from './PerfumePlaybookModal';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-    faMicrochip, faChartLine, faCube,
-    faBullseye, faCircleCheck, faHandshake,
-    faFileLines, faCalendarDays, faLock,
-    faCreditCard, faMobileScreen, faSitemap,
-    faUsers, faFileInvoiceDollar, faMagnifyingGlassChart
-} from '@fortawesome/free-solid-svg-icons';
+import { faMicrochip } from '@fortawesome/free-solid-svg-icons/faMicrochip';
+import { faChartLine } from '@fortawesome/free-solid-svg-icons/faChartLine';
+import { faCube } from '@fortawesome/free-solid-svg-icons/faCube';
+import { faBullseye } from '@fortawesome/free-solid-svg-icons/faBullseye';
+import { faCircleCheck } from '@fortawesome/free-solid-svg-icons/faCircleCheck';
+import { faHandshake } from '@fortawesome/free-solid-svg-icons/faHandshake';
+import { faFileLines } from '@fortawesome/free-solid-svg-icons/faFileLines';
+import { faCalendarDays } from '@fortawesome/free-solid-svg-icons/faCalendarDays';
+import { faLock } from '@fortawesome/free-solid-svg-icons/faLock';
+import { faCreditCard } from '@fortawesome/free-solid-svg-icons/faCreditCard';
+import { faMobileScreen } from '@fortawesome/free-solid-svg-icons/faMobileScreen';
+import { faSitemap } from '@fortawesome/free-solid-svg-icons/faSitemap';
+import { faUsers } from '@fortawesome/free-solid-svg-icons/faUsers';
+import { faFileInvoiceDollar } from '@fortawesome/free-solid-svg-icons/faFileInvoiceDollar';
+import { faMagnifyingGlassChart } from '@fortawesome/free-solid-svg-icons/faMagnifyingGlassChart';
 
 // Datos dinámicos extraídos de tus documentos reales (Excel y Playbooks)
 const startupsData = [

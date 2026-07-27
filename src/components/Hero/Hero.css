@@ -379,3 +379,166 @@
     color: var(--color-accent);
     font-size: 16px;
 }
+
+/* =========================================
+   RESPONSIVE DESIGN (VisualAI-inspired)
+   ========================================= */
+@media (max-width: 992px) {
+    .hero {
+        height: auto;
+        min-height: 100vh;
+        padding: 90px 24px 50px;
+    }
+
+    .hero__main-container {
+        flex-direction: column;
+        gap: 40px;
+        padding-top: 20px;
+    }
+
+    .hero__left {
+        order: 1;
+        text-align: center;
+        align-items: center;
+    }
+
+    .hero__center {
+        order: 2;
+        height: 380px;
+        width: 100%;
+        max-width: 450px;
+        margin: 20px auto;
+        flex: none;
+    }
+
+    .hero__right {
+        order: 3;
+        text-align: center;
+        align-items: center;
+    }
+
+    /* Ajuste de órbita y retrato */
+    .hero__portrait-wrapper {
+        width: 260px;
+        height: 260px;
+        border-width: 3px;
+        outline-width: 3px;
+    }
+
+    .hero__orbit--inner {
+        width: 250px;
+        height: 250px;
+    }
+
+    .hero__orbit--outer {
+        width: 300px;
+        height: 300px;
+    }
+
+    .hero__floating-card {
+        width: 48px;
+        height: 48px;
+        min-width: 42px;
+        min-height: 42px;
+        font-size: 18px;
+        border-radius: 10px;
+    }
+
+    .hero__floating-card--ai {
+        top: 8%;
+        left: 8%;
+    }
+
+    .hero__floating-card--code {
+        top: 22%;
+        right: 4%;
+    }
+
+    .hero__floating-card--gears {
+        bottom: 18%;
+        left: 2%;
+    }
+
+    .hero__floating-card--cloud {
+        bottom: 8%;
+        right: 10%;
+    }
+
+    .hero__floating-card--shield {
+        top: -25px;
+        left: 45%;
+    }
+
+    .hero__contact-panel,
+    .hero__status-panel {
+        width: 100%;
+        max-width: 400px;
+        align-items: center;
+    }
+
+    .hero__contact-card,
+    .hero__status-card {
+        width: 100%;
+        justify-content: center;
+        padding: 12px 20px;
+    }
+
+    .hero__skills-panel {
+        width: 100%;
+        max-width: 400px;
+        text-align: left;
+    }
+
+    .hero__bottom-bar {
+        flex-direction: column;
+        gap: 15px;
+        padding: 20px;
+        margin-top: 30px;
+        border-radius: 20px;
+    }
+
+    .hero__attribute {
+        width: 100%;
+        justify-content: center;
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 576px) {
+    .hero {
+        padding: 80px 16px 40px;
+    }
+
+    .hero__name {
+        font-size: 34px;
+    }
+
+    .hero__portrait-wrapper {
+        width: 220px;
+        height: 220px;
+    }
+
+    .hero__orbit--inner {
+        width: 210px;
+        height: 210px;
+    }
+
+    .hero__orbit--outer {
+        width: 250px;
+        height: 250px;
+    }
+
+    .hero__center {
+        height: 320px;
+    }
+
+    .hero__floating-card {
+        width: 42px;
+        height: 42px;
+        font-size: 16px;
+    }
+
+    .hero__floating-card--shield {
+        top: -15px;
+    }
+}

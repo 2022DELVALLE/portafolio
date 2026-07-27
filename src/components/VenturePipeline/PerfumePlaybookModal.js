@@ -1,53 +1,71 @@
 import React, { useState } from 'react';
 import './PerfumePlaybookModal.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-    faCashRegister, faBrain, faUsers, faChartBar,
-    faShieldAlt, faCog, faClipboardCheck, faTimes,
-    faTint, faFlask, faStore, faArrowRightArrowLeft,
-    faClock, faRedo, faStar, faLock, faUser, faUsersRectangle,
-    faShieldHeart, faSun, faUserCheck, faMoon, faClipboardList, faBullseye, faArrowRight
-} from '@fortawesome/free-solid-svg-icons';
+import { faCashRegister } from '@fortawesome/free-solid-svg-icons/faCashRegister';
+import { faBrain } from '@fortawesome/free-solid-svg-icons/faBrain';
+import { faUsers } from '@fortawesome/free-solid-svg-icons/faUsers';
+import { faChartBar } from '@fortawesome/free-solid-svg-icons/faChartBar';
+import { faShieldAlt } from '@fortawesome/free-solid-svg-icons/faShieldAlt';
+import { faCog } from '@fortawesome/free-solid-svg-icons/faCog';
+import { faClipboardCheck } from '@fortawesome/free-solid-svg-icons/faClipboardCheck';
+import { faTimes } from '@fortawesome/free-solid-svg-icons/faTimes';
+import { faTint } from '@fortawesome/free-solid-svg-icons/faTint';
+import { faFlask } from '@fortawesome/free-solid-svg-icons/faFlask';
+import { faStore } from '@fortawesome/free-solid-svg-icons/faStore';
+import { faArrowRightArrowLeft } from '@fortawesome/free-solid-svg-icons/faArrowRightArrowLeft';
+import { faClock } from '@fortawesome/free-solid-svg-icons/faClock';
+import { faRedo } from '@fortawesome/free-solid-svg-icons/faRedo';
+import { faStar } from '@fortawesome/free-solid-svg-icons/faStar';
+import { faLock } from '@fortawesome/free-solid-svg-icons/faLock';
+import { faUser } from '@fortawesome/free-solid-svg-icons/faUser';
+import { faUsersRectangle } from '@fortawesome/free-solid-svg-icons/faUsersRectangle';
+import { faShieldHeart } from '@fortawesome/free-solid-svg-icons/faShieldHeart';
+import { faSun } from '@fortawesome/free-solid-svg-icons/faSun';
+import { faUserCheck } from '@fortawesome/free-solid-svg-icons/faUserCheck';
+import { faMoon } from '@fortawesome/free-solid-svg-icons/faMoon';
+import { faClipboardList } from '@fortawesome/free-solid-svg-icons/faClipboardList';
+import { faBullseye } from '@fortawesome/free-solid-svg-icons/faBullseye';
+import { faArrowRight } from '@fortawesome/free-solid-svg-icons/faArrowRight';
 
 const PerfumePlaybookModal = ({ onClose }) => {
     const [activeTab, setActiveTab] = useState('flujo');
 
     return (
-        <div className="playbook-modal-overlay" onClick={onClose}>
-            <div className="playbook-modal-content" onClick={(e) => e.stopPropagation()}>
-                <button className="playbook-modal-close" onClick={onClose} aria-label="Cerrar modal">
+        <div className="pb-modal" onClick={onClose}>
+            <div className="pb-modal__content" onClick={(e) => e.stopPropagation()}>
+                <button className="pb-modal__close" onClick={onClose} aria-label="Cerrar modal">
                     <FontAwesomeIcon icon={faTimes} />
                 </button>
 
-                <div className="playbook-modal-body">
+                <div className="pb-modal__body">
                     <h2 className="sr-only">Playbook Interno de Perfumerías — Sistema de Optimización de Ingresos por Kenyo</h2>
 
-                    <div className="pb-header">
-                        <div className="pb-badge">Documento Ejecutivo — Uso Interno</div>
-                        <div className="pb-title">Playbook Integral: Arquitectura de Ingresos para Perfumerías</div>
-                        <div className="pb-sub">Estratega: Kenyo &nbsp;·&nbsp; Mercado objetivo: Tarma, Perú &nbsp;·&nbsp; Versión 2.0 — Modelo Completo</div>
+                    <div className="pb-modal__header">
+                        <div className="pb-modal__badge">Documento Ejecutivo — Uso Interno</div>
+                        <div className="pb-modal__title">Playbook Integral: Arquitectura de Ingresos para Perfumerías</div>
+                        <div className="pb-modal__sub">Estratega: Kenyo &nbsp;·&nbsp; Mercado objetivo: Tarma, Perú &nbsp;·&nbsp; Versión 2.0 — Modelo Completo</div>
                     </div>
 
-                    <div className="tabs">
-                        <button className={`tab-btn ${activeTab === 'flujo' ? 'active' : ''}`} onClick={() => setActiveTab('flujo')}>
+                    <div className="pb-modal__tabs">
+                        <button className={`pb-modal__tab-btn ${activeTab === 'flujo' ? 'pb-modal__tab-btn--active' : ''}`} onClick={() => setActiveTab('flujo')}>
                             <FontAwesomeIcon icon={faCashRegister} /> Flujo de caja
                         </button>
-                        <button className={`tab-btn ${activeTab === 'psico' ? 'active' : ''}`} onClick={() => setActiveTab('psico')}>
+                        <button className={`pb-modal__tab-btn ${activeTab === 'psico' ? 'pb-modal__tab-btn--active' : ''}`} onClick={() => setActiveTab('psico')}>
                             <FontAwesomeIcon icon={faBrain} /> Psicología
                         </button>
-                        <button className={`tab-btn ${activeTab === 'mgm' ? 'active' : ''}`} onClick={() => setActiveTab('mgm')}>
+                        <button className={`pb-modal__tab-btn ${activeTab === 'mgm' ? 'pb-modal__tab-btn--active' : ''}`} onClick={() => setActiveTab('mgm')}>
                             <FontAwesomeIcon icon={faUsers} /> Sistema MGM
                         </button>
-                        <button className={`tab-btn ${activeTab === 'finanzas' ? 'active' : ''}`} onClick={() => setActiveTab('finanzas')}>
+                        <button className={`pb-modal__tab-btn ${activeTab === 'finanzas' ? 'pb-modal__tab-btn--active' : ''}`} onClick={() => setActiveTab('finanzas')}>
                             <FontAwesomeIcon icon={faChartBar} /> Finanzas
                         </button>
-                        <button className={`tab-btn ${activeTab === 'legal' ? 'active' : ''}`} onClick={() => setActiveTab('legal')}>
+                        <button className={`pb-modal__tab-btn ${activeTab === 'legal' ? 'pb-modal__tab-btn--active' : ''}`} onClick={() => setActiveTab('legal')}>
                             <FontAwesomeIcon icon={faShieldAlt} /> Legal
                         </button>
-                        <button className={`tab-btn ${activeTab === 'operacion' ? 'active' : ''}`} onClick={() => setActiveTab('operacion')}>
+                        <button className={`pb-modal__tab-btn ${activeTab === 'operacion' ? 'pb-modal__tab-btn--active' : ''}`} onClick={() => setActiveTab('operacion')}>
                             <FontAwesomeIcon icon={faCog} /> Operación
                         </button>
-                        <button className={`tab-btn ${activeTab === 'auditoria' ? 'active' : ''}`} onClick={() => setActiveTab('auditoria')}>
+                        <button className={`pb-modal__tab-btn ${activeTab === 'auditoria' ? 'pb-modal__tab-btn--active' : ''}`} onClick={() => setActiveTab('auditoria')}>
                             <FontAwesomeIcon icon={faClipboardCheck} /> Auditoría
                         </button>
                     </div>

@@ -583,3 +583,113 @@
         margin: 0 auto;
     }
 }
+
+@media (max-width: 768px) {
+    .architecture {
+        padding: 80px 16px 60px;
+    }
+
+    .architecture__title {
+        font-size: 28px;
+    }
+
+    .architecture__subtitle {
+        font-size: 15px;
+    }
+
+    .architecture__leverage {
+        flex-direction: column;
+        text-align: center;
+        padding: 20px;
+        gap: 15px;
+    }
+
+    .architecture__leverage-icon {
+        font-size: 36px;
+    }
+
+    .architecture__flow {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .architecture__node {
+        width: 100px;
+        margin: 0 auto;
+    }
+
+    .architecture__node--central {
+        transform: scale(1.05);
+        margin: 10px 0;
+    }
+
+    .architecture__flow-connection {
+        width: 2px;
+        height: 35px;
+        margin: 5px auto;
+        background: rgba(0, 0, 0, 0.15);
+        flex-grow: 0;
+        display: flex;
+        justify-content: flex-start;
+    }
+
+    .architecture__flow-connection--fast {
+        width: 3px;
+        height: 35px;
+        background: rgba(0, 168, 107, 0.4);
+    }
+
+    .architecture__metric {
+        position: absolute;
+        left: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        text-align: left;
+        white-space: nowrap;
+        font-size: 9px;
+    }
+
+    .architecture__results ul {
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+
+    .architecture__thesis {
+        flex-direction: column;
+        text-align: center;
+        padding: 20px;
+        gap: 12px;
+    }
+
+    .architecture__thesis-icon {
+        font-size: 22px;
+    }
+
+    .architecture__thesis-text {
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 576px) {
+    .architecture__title {
+        font-size: 24px;
+    }
+
+    .architecture__cta {
+        padding: 20px;
+    }
+
+    .architecture__cta-title {
+        font-size: 16px;
+    }
+
+    .architecture__cta-desc {
+        font-size: 13px;
+    }
+
+    .architecture__cta-btn {
+        width: 100%;
+        justify-content: center;
+    }
+}

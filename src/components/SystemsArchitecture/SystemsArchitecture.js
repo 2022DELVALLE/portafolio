@@ -5,23 +5,21 @@ import './SystemsArchitecture.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 // Importar exactamente los íconos del set solid instalados
-import {
-    faBullseye,
-    faIndustry,
-    faWarehouse,
-    faShip,
-    faTruck,
-    faStore,
-    faUser,
-    faNetworkWired,
-    faFileContract,
-    faLightbulb,
-    faRoute,
-    faChartPie,
-    faScaleBalanced,
-    faChartLine,
-    faArrowRight
-} from '@fortawesome/free-solid-svg-icons';
+import { faBullseye } from '@fortawesome/free-solid-svg-icons/faBullseye';
+import { faIndustry } from '@fortawesome/free-solid-svg-icons/faIndustry';
+import { faWarehouse } from '@fortawesome/free-solid-svg-icons/faWarehouse';
+import { faShip } from '@fortawesome/free-solid-svg-icons/faShip';
+import { faTruck } from '@fortawesome/free-solid-svg-icons/faTruck';
+import { faStore } from '@fortawesome/free-solid-svg-icons/faStore';
+import { faUser } from '@fortawesome/free-solid-svg-icons/faUser';
+import { faNetworkWired } from '@fortawesome/free-solid-svg-icons/faNetworkWired';
+import { faFileContract } from '@fortawesome/free-solid-svg-icons/faFileContract';
+import { faLightbulb } from '@fortawesome/free-solid-svg-icons/faLightbulb';
+import { faRoute } from '@fortawesome/free-solid-svg-icons/faRoute';
+import { faChartPie } from '@fortawesome/free-solid-svg-icons/faChartPie';
+import { faScaleBalanced } from '@fortawesome/free-solid-svg-icons/faScaleBalanced';
+import { faChartLine } from '@fortawesome/free-solid-svg-icons/faChartLine';
+import { faArrowRight } from '@fortawesome/free-solid-svg-icons/faArrowRight';
 
 const SystemsArchitecture = () => {
     return (
