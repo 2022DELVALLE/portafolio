@@ -40,7 +40,7 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    gap: 50px;
+    gap: 10px;
     padding: 20px;
 }
 
@@ -75,7 +75,7 @@ body {
 
 .visual-ai__title {
     font-family: var(--font-title);
-    font-size: clamp(2.5rem, 4vw, 4rem);
+    font-size: clamp(2.5rem, 3vw, 3rem);
     line-height: 1.1;
     letter-spacing: -1px;
 }
@@ -94,12 +94,12 @@ body {
     width: 80px;
     height: 5px;
     background: linear-gradient(90deg, var(--color-accent), transparent);
-    margin: 20px 0;
+    margin: 5px 0;
     border-radius: 4px;
 }
 
 .visual-ai__subtitle {
-    font-size: clamp(1rem, 1.5vw, 1.25rem);
+    font-size: clamp(1rem, 1vw, 1.25rem);
     color: var(--color-text-sec);
     max-width: 850px;
     font-weight: 400;

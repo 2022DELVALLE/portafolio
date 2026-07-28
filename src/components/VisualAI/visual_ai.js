@@ -36,8 +36,8 @@ const PortfolioDashboard = () => {
 
             <header className="visual-ai__header">
                 <h1 className="visual-ai__title">
-                    <span className="visual-ai__highlight">MI PORTAFOLIO</span><br />
-                    <span className="visual-ai__title-black">Creación de Flyers IA</span>
+                    <span className="visual-ai__highlight">Creación</span><br />
+                    <span className="visual-ai__title-black">de Flyers IA</span>
                 </h1>
                 <div className="visual-ai__divider"></div>
                 <p className="visual-ai__subtitle">
