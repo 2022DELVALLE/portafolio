@@ -1,17 +1,4 @@
-:root {
-    --color-bg: #FFFFFF;
-    --color-text-main: #1A1A1A;
-    --color-text-sec: #5A5A5A;
-    --color-accent: #FF5500;
-    --color-accent-soft: #FFF0E5;
-    --color-shadow: rgba(0, 0, 0, 0.05);
-    --color-shadow-heavy: rgba(255, 85, 0, 0.12);
-    --color-decorative: #F5F5F5;
-    --color-border: #E8E8E8;
-
-    --font-title: 'Oxanium', sans-serif;
-    --font-body: 'Inter', sans-serif;
-}
+/* VARIABLES GLOBALES (Moved to index.css) */
 
 * {
     margin: 0;
@@ -256,10 +243,12 @@ body {
     width: 30%;
     max-width: 70px;
     height: 120px;
-    background: linear-gradient(180deg, var(--color-decorative) 0%, #E0E0E0 100%);
     border-radius: 12px;
     opacity: 0.6;
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    object-fit: cover;
+    /* Añadido importante */
+    box-shadow: 0 5px 15px var(--color-shadow);
 }
 
 .visual-ai__thumbnail--active {
@@ -267,9 +256,8 @@ body {
     max-width: 90px;
     width: 40%;
     opacity: 1;
-    background: linear-gradient(135deg, var(--color-accent-soft) 0%, #FFD6BA 100%);
-    border: 2px solid var(--color-accent);
-    box-shadow: 0 10px 25px rgba(255, 85, 0, 0.2);
+    border: 3px solid var(--color-accent);
+    box-shadow: 0 10px 25px rgba(255, 85, 0, 0.3);
 }
 
 .visual-ai__indicators {
@@ -538,5 +526,82 @@ body {
 
     .visual-ai__skill-item {
         font-size: 0.85rem;
+    }
+}
+
+/* =========================================================
+   ESTILOS DE LA GALERÍA (NUEVA SECCIÓN)
+   ========================================================= */
+
+.visual-ai__gallery {
+    width: 100%;
+    margin-top: 30px;
+    margin-bottom: 50px;
+    display: flex;
+    flex-direction: column;
+    z-index: 1;
+}
+
+.visual-ai__gallery-grid {
+    display: grid;
+    /* Esto hace que sea responsive automáticamente. 
+       Las imágenes tendrán un mínimo de 220px y crecerán si hay espacio */
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 25px;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.visual-ai__gallery-item {
+    width: 100%;
+    /* Mantiene las imágenes cuadradas independientemente de su tamaño real */
+    aspect-ratio: 1 / 1;
+    border-radius: 18px;
+    overflow: hidden;
+    background: var(--color-decorative);
+    box-shadow: 0 8px 25px var(--color-shadow);
+    border: 1px solid var(--color-border);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease, border-color 0.3s ease;
+    cursor: pointer;
+    position: relative;
+}
+
+.visual-ai__gallery-item::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(255, 85, 0, 0.2) 0%, transparent 50%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.visual-ai__gallery-item:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px var(--color-shadow-heavy);
+    border-color: var(--color-accent);
+}
+
+.visual-ai__gallery-item:hover::after {
+    opacity: 1;
+}
+
+.visual-ai__gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.visual-ai__gallery-item:hover img {
+    transform: scale(1.08);
+}
+
+/* Ajustes responsive adicionales para móviles */
+@media (max-width: 768px) {
+    .visual-ai__gallery-grid {
+        /* En móviles, las imágenes pueden ser un poco más pequeñas */
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+        gap: 15px;
     }
 }

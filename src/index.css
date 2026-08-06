@@ -1,13 +1,91 @@
-body {
+:root {
+  /* Unified Corporate Palette */
+  --color-bg-pure: #FFFFFF;
+  --color-bg: #FFFFFF;
+  --color-accent-main: #FF6600;
+  --color-accent: #FF6600;
+  --color-accent-hover: #FF7A1A;
+  --color-accent-soft: #FFF0E5;
+  --color-corp-black: #222222;
+  --color-text-main: #222222;
+  --color-text-gray: #555555;
+  --color-text-sec: #555555;
+  --color-light-gray: #D8D8D8;
+  --color-badge-gray: #F5F5F5;
+  --color-decorative: #F5F5F5;
+  --color-border: #EFEFEF;
+
+  /* Shadows */
+  --color-shadow: rgba(0, 0, 0, 0.05);
+  --color-shadow-heavy: rgba(255, 85, 0, 0.12);
+  --shadow-main: 0 12px 35px rgba(90, 90, 90, 0.06);
+  --shadow-hover: 0 20px 45px rgba(90, 90, 90, 0.10);
+
+  /* Typography */
+  --font-display: 'Oxanium', sans-serif;
+  --font-title: 'Oxanium', sans-serif;
+  --font-ui: 'Inter', sans-serif;
+  --font-body: 'Inter', sans-serif;
+}
+
+* {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text-main);
+  font-family: var(--font-body);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
+
+/* =========================================
+   GLOBAL BUTTON STYLES
+========================================= */
+.btn {
+  padding: 14px 24px;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 14px;
+  font-family: var(--font-ui);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: all 0.3s ease;
+  justify-content: center;
+}
+
+.btn__icon {
+  font-size: 16px;
+}
+
+.btn--primary {
+  background: var(--color-accent-main);
+  color: var(--color-bg-pure);
+  border: none;
+}
+
+.btn--primary:hover {
+  background: var(--color-accent-hover);
+  transform: translateY(-2px);
+}
+
+.btn--secondary {
+  background: transparent;
+  color: var(--color-accent-main);
+  border: 2px solid var(--color-accent-main);
+}
+
+.btn--secondary:hover {
+  background: var(--color-accent-soft);
+  transform: translateY(-2px);
+}
+

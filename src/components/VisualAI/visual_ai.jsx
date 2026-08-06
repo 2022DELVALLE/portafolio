@@ -26,7 +26,37 @@ import { faNeos } from '@fortawesome/free-brands-svg-icons/faNeos';
 
 import './visual_ai.css';
 
-import finalFlyerImage from '../../assets/images/final.jpeg';
+// ==========================================
+// 1. IMPORTACIÓN DE IMÁGENES PRINCIPALES
+// ==========================================
+import finalFlyerImage from '../../assets/visualaiimages/visualaiimage_05.jpg';
+import var1 from '../../assets/visualaiimages/visualaiimage_06.jpg';
+import var2 from '../../assets/visualaiimages/visualaiimage_03.jpg';
+import var3 from '../../assets/visualaiimages/visualaiimage_04.jpg';
+
+// ==========================================
+// 2. IMPORTACIÓN DE IMÁGENES DE LA GALERÍA (15)
+// ==========================================
+import img1 from '../../assets/visualaiimages/visualaiimage_02.jpg';
+import img2 from '../../assets/visualaiimages/visualaiimage_02.jpg';
+import img3 from '../../assets/visualaiimages/visualaiimage_03.jpg';
+import img4 from '../../assets/visualaiimages/visualaiimage_04.jpg';
+import img5 from '../../assets/visualaiimages/visualaiimage_05.jpg';
+import img6 from '../../assets/visualaiimages/visualaiimage_06.jpg';
+import img7 from '../../assets/visualaiimages/visualaiimage_07.jpg';
+import img8 from '../../assets/visualaiimages/visualaiimage_08.jpg';
+import img9 from '../../assets/visualaiimages/visualaiimage_09.jpg';
+import img10 from '../../assets/visualaiimages/visualaiimage_10.jpg';
+import img11 from '../../assets/visualaiimages/visualaiimage_11.jpg';
+import img12 from '../../assets/visualaiimages/visualaiimage_12.jpg';
+import img13 from '../../assets/visualaiimages/visualaiimage_13.jpg';
+import img14 from '../../assets/visualaiimages/visualaiimage_14.jpg';
+import img15 from '../../assets/visualaiimages/visualaiimage_15.jpg';
+
+// Arreglo para mapear fácilmente la galería
+const galleryImages = [
+    img1, img2, img3, img4, img5, img6, img7, img8, img9, img10, img11, img12, img13, img14, img15
+];
 
 const PortfolioDashboard = () => {
     return (
@@ -46,6 +76,7 @@ const PortfolioDashboard = () => {
             </header>
 
             <section className="visual-ai__flow">
+                {/* ... Tarjeta 1 (Entrada) sin cambios ... */}
                 <article className="visual-ai__card">
                     <div className="visual-ai__card-header">
                         <div className="visual-ai__step-badge">01</div>
@@ -55,11 +86,9 @@ const PortfolioDashboard = () => {
                         </div>
                     </div>
                     <p className="visual-ai__card-desc">Describe lo que necesitas.</p>
-
                     <div className="visual-ai__prompt-box">
                         <p>"Crea un flyer para un restaurante italiano, elegante, moderno, iluminación cinematográfica, pizza artesanal, colores cálidos, promoción del fin de semana..."</p>
                     </div>
-
                     <div className="visual-ai__card-icons">
                         <FontAwesomeIcon icon={faAlignLeft} />
                         <FontAwesomeIcon icon={faImage} />
@@ -74,6 +103,7 @@ const PortfolioDashboard = () => {
                     <FontAwesomeIcon icon={faChevronRight} className="visual-ai__arrow-head" />
                 </div>
 
+                {/* Tarjeta 2 (Proceso IA con Variables importadas) */}
                 <article className="visual-ai__card visual-ai__card--process">
                     <div className="visual-ai__network">
                         <FontAwesomeIcon icon={faRobot} />
@@ -85,15 +115,15 @@ const PortfolioDashboard = () => {
                         <div className="visual-ai__step-badge">02</div>
                         <div className="visual-ai__step-title">
                             <h4>Proceso IA</h4>
-                            <span>Generación de Variaciones</span>
+                            <span>Generación de visualaiimage_11</span>
                         </div>
                     </div>
 
                     <div className="visual-ai__variations">
                         <div className="visual-ai__thumbnails">
-                            <div className="visual-ai__thumbnail visual-ai__thumbnail--elegant"></div>
-                            <div className="visual-ai__thumbnail visual-ai__thumbnail--modern visual-ai__thumbnail--active"></div>
-                            <div className="visual-ai__thumbnail visual-ai__thumbnail--minimal"></div>
+                            <img src={var1} alt="Variación 1" className="visual-ai__thumbnail visual-ai__thumbnail--elegant" />
+                            <img src={var2} alt="Variación 2" className="visual-ai__thumbnail visual-ai__thumbnail--modern visual-ai__thumbnail--active" />
+                            <img src={var3} alt="Variación 3" className="visual-ai__thumbnail visual-ai__thumbnail--minimal" />
                         </div>
                         <div className="visual-ai__indicators">
                             <span className="visual-ai__dot"></span>
@@ -108,6 +138,7 @@ const PortfolioDashboard = () => {
                     <FontAwesomeIcon icon={faChevronRight} className="visual-ai__arrow-head" />
                 </div>
 
+                {/* Tarjeta 3 (Final Flyer) */}
                 <article className="visual-ai__card visual-ai__card--result">
                     <div className="visual-ai__card-header">
                         <div className="visual-ai__step-badge">03</div>
@@ -131,6 +162,31 @@ const PortfolioDashboard = () => {
                 </article>
             </section>
 
+            {/* --- SECCIÓN DE GALERÍA (Mapeando el Array de Imports) --- */}
+            <section className="visual-ai__gallery">
+                <div className="visual-ai__header">
+                    <h2 className="visual-ai__title" style={{ fontSize: "clamp(2rem, 2.5vw, 2.5rem)", marginTop: "40px" }}>
+                        <span className="visual-ai__title-black">Colección de</span> <span className="visual-ai__highlight">Diseños</span>
+                    </h2>
+                    <div className="visual-ai__divider"></div>
+                    <p className="visual-ai__subtitle" style={{ marginBottom: "20px" }}>Explora el resto de proyectos generados a través de inteligencia artificial.</p>
+                </div>
+
+                <div className="visual-ai__gallery-grid">
+                    {/* Iteramos sobre las imágenes importadas */}
+                    {galleryImages.map((imgSrc, index) => (
+                        <div key={index} className="visual-ai__gallery-item">
+                            <img
+                                src={imgSrc}
+                                alt={`Diseño Generado ${index + 1}`}
+                                loading="lazy"
+                            />
+                        </div>
+                    ))}
+                </div>
+            </section>
+
+            {/* ... Footer sin cambios ... */}
             <section className="visual-ai__footer">
                 <div className="visual-ai__skills">
                     <div className="visual-ai__skill-item"><FontAwesomeIcon icon={faTerminal} /> Prompt Engineering</div>

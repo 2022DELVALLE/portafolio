@@ -1,19 +1,6 @@
 /* =========================================
-   VARIABLES GLOBALES (Paleta Corporate AI)
+   VARIABLES GLOBALES (Moved to index.css)
 ========================================= */
-:root {
-    --color-bg: #FFFFFF;
-    --color-text-main: #2B2B2B;
-    --color-text-sec: #6A6A6A;
-    --color-accent: #FF6600;
-    --color-accent-soft: #FFE5D3;
-    --color-shadow: rgba(0, 0, 0, 0.10);
-    --color-shadow-heavy: rgba(60, 60, 60, 0.12);
-    --color-decorative: #DADADA;
-
-    --font-title: 'Oxanium', sans-serif;
-    --font-body: 'Inter', sans-serif;
-}
 
 /* =========================================
    BLOCK: hero

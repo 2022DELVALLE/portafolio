@@ -1,23 +1,6 @@
 /* =========================================
-   VARIABLES CORPORATE AI & VC DASHBOARD
+   VARIABLES CORPORATE AI & VC DASHBOARD (Moved to index.css)
 ========================================= */
-:root {
-    --color-bg-pure: #FFFFFF;
-    --color-accent-main: #FF6600;
-    --color-accent-hover: #FF7A1A;
-    --color-accent-soft: #FFF2EA;
-    --color-corp-black: #222222;
-    --color-text-gray: #555555;
-    --color-light-gray: #D8D8D8;
-    --color-badge-gray: #F6F6F6;
-    --color-border: #EFEFEF;
-
-    --shadow-main: 0 12px 35px rgba(90, 90, 90, 0.06);
-    --shadow-hover: 0 20px 45px rgba(90, 90, 90, 0.10);
-
-    --font-display: 'Oxanium', sans-serif;
-    --font-ui: 'Inter', sans-serif;
-}
 
 /* =========================================
    BLOCK: venture
@@ -410,46 +393,8 @@
 }
 
 /* =========================================
-   BLOCK: btn (Botones)
+   BLOCK: btn (Botones) - MOVED TO GLOBAL CSS
 ========================================= */
-.btn {
-    padding: 14px 24px;
-    border-radius: 12px;
-    font-weight: 600;
-    font-size: 14px;
-    font-family: var(--font-ui);
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    transition: all 0.3s ease;
-}
-
-.btn__icon {
-    font-size: 16px;
-}
-
-.btn--primary {
-    background: var(--color-accent-main);
-    color: var(--color-bg-pure);
-    border: none;
-}
-
-.btn--primary:hover {
-    background: var(--color-accent-hover);
-    transform: translateY(-2px);
-}
-
-.btn--secondary {
-    background: transparent;
-    color: var(--color-accent-main);
-    border: 2px solid var(--color-accent-main);
-}
-
-.btn--secondary:hover {
-    background: var(--color-accent-soft);
-    transform: translateY(-2px);
-}
 
 /* Responsive básico para la CTA y Panel KPI en pantallas muy pequeñas */
 @media (max-width: 900px) {

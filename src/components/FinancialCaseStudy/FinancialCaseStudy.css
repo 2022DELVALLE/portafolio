@@ -1,6 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap');
 
-:root {
+/* =========================================
+   BLOCK: fcs
+   ========================================= */
+.fcs {
     --color-fcs-accent: #FF6600;
     --color-fcs-accent-alt: #FF7A1A;
     --color-fcs-bg-card: #F9F9F9;
@@ -10,12 +13,7 @@
     --color-fcs-grid: #E0E0E0;
     --color-fcs-ref-line: #D0D0D0;
     --font-mono: 'IBM Plex Mono', monospace;
-}
 
-/* =========================================
-   BLOCK: fcs
-   ========================================= */
-.fcs {
     background: var(--color-bg);
     color: var(--color-text-main);
     padding: 88px 24px 96px;

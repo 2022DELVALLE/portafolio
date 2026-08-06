@@ -8,12 +8,14 @@ import miFoto from '../../assets/images/fotoperfil.png';
 
 const routes = [
     { path: '/home', label: 'Inicio' },
+    { path: '/certificados', label: 'Certificados' },
     { path: '/ventures', label: 'Ventures' },
     { path: '/arquitectura', label: 'Arquitectura' },
     { path: '/visual-ia', label: 'Visual IA' },
     { path: '/case-study', label: 'Case Study' },
     { path: '/modelo-financiero', label: 'Modelo Fin.' },
 ];
+
 
 const Navbar = () => {
     const navigate = useNavigate();

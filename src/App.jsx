@@ -7,6 +7,7 @@ import SystemsArchitecture from './components/SystemsArchitecture/SystemsArchite
 import Portada from './components/VisualAI/visual_ai';
 import FinancialCaseStudy from './components/FinancialCaseStudy/FinancialCaseStudy';
 import FinancialModelViewer from './components/FinancialModelViewer/FinancialModelViewer';
+import Certificates from './components/Certificates/Certificates';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <Route path="/visual-ia" element={<Portada />} />
           <Route path="/case-study" element={<FinancialCaseStudy />} />
           <Route path="/modelo-financiero" element={<FinancialModelViewer />} />
+          <Route path="/certificados" element={<Certificates />} />
         </Routes>
       </div>
     </BrowserRouter>

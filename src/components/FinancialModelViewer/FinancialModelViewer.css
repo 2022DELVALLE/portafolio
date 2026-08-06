@@ -1,6 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap');
 
-:root {
+/* =========================================
+   BLOCK: fmv
+   ========================================= */
+.fmv {
     --color-fmv-accent: #FF6600;
     --color-fmv-accent-alt: #FF7A1A;
     --color-fmv-bg-card: #F9F9F9;
@@ -9,12 +12,7 @@
     --color-fmv-badge-bg: #FFF2EA;
     --color-fmv-badge-border: #FFE5D3;
     --font-mono: 'IBM Plex Mono', monospace;
-}
 
-/* =========================================
-   BLOCK: fmv
-   ========================================= */
-.fmv {
     background: var(--color-bg);
     color: var(--color-text-main);
     padding: 88px 24px 96px;
