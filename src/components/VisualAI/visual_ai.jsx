@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { faAlignLeft } from '@fortawesome/free-solid-svg-icons/faAlignLeft';
@@ -59,21 +59,106 @@ const galleryImages = [
 ];
 
 const PortfolioDashboard = () => {
+    const [visibleCount, setVisibleCount] = useState(10);
+    const [selectedImage, setSelectedImage] = useState(null);
+    const [activeVariation, setActiveVariation] = useState(1);
+
+    const handleLoadMore = () => {
+        if (visibleCount >= galleryImages.length) {
+            setVisibleCount(10);
+        } else {
+            setVisibleCount(prev => prev + 10);
+        }
+    };
+
+    const handleImageClick = (imgSrc) => {
+        setSelectedImage(imgSrc);
+    };
+
+    const handleVariationClick = (index) => {
+        setActiveVariation(index);
+    };
+
+    const closeModal = () => {
+        setSelectedImage(null);
+    };
+
+    useEffect(() => {
+        const handleKeyDown = (e) => {
+            if (e.key === 'Escape') closeModal();
+        };
+        if (selectedImage) {
+            window.addEventListener('keydown', handleKeyDown);
+        }
+        return () => window.removeEventListener('keydown', handleKeyDown);
+    }, [selectedImage]);
+
     return (
         <div className="visual-ai" id="visual-ia">
             <div className="visual-ai__corner visual-ai__corner--top-right"></div>
             <div className="visual-ai__corner visual-ai__corner--bottom-left"></div>
 
-            <header className="visual-ai__header">
-                <h1 className="visual-ai__title">
-                    <span className="visual-ai__highlight">Creación</span><br />
-                    <span className="visual-ai__title-black">de Flyers IA</span>
-                </h1>
-                <div className="visual-ai__divider"></div>
-                <p className="visual-ai__subtitle">
-                    Transformo <span className="visual-ai__highlight">ideas</span> en contenido visual de <span className="visual-ai__highlight">alto impacto</span> mediante <span className="visual-ai__highlight">inteligencia artificial</span>, diseño estratégico y edición profesional.
-                </p>
+            <header className="visual-ai__header-container">
+                <div className="visual-ai__header-top">
+                    <div className="visual-ai__header-text">
+                        <h1 className="visual-ai__title">
+                            <span className="visual-ai__highlight">Creación</span><br />
+                            <span className="visual-ai__title-black">de Flyers IA</span>
+                        </h1>
+                        <div className="visual-ai__divider"></div>
+                        <p className="visual-ai__subtitle">
+                            Transformo <span className="visual-ai__highlight">ideas</span> en contenido visual de <span className="visual-ai__highlight">alto impacto</span> mediante <span className="visual-ai__highlight">inteligencia artificial</span>, diseño estratégico y edición profesional.
+                        </p>
+                    </div>
+                    <div className="visual-ai__cta">
+                        <span className="visual-ai__cta-question">¿Tienes una idea?</span>
+                        <span className="visual-ai__cta-action">Convirtámosla en una identidad visual.</span>
+                    </div>
+                </div>
+
+                <div className="visual-ai__skills">
+                    <div className="visual-ai__skill-item"><FontAwesomeIcon icon={faTerminal} /> Prompt Engineering</div>
+                    <div className="visual-ai__skill-item"><FontAwesomeIcon icon={faBrain} /> Midjourney</div>
+                    <div className="visual-ai__skill-item"><FontAwesomeIcon icon={faBolt} /> Flux</div>
+                    <div className="visual-ai__skill-item"><FontAwesomeIcon icon={faNeos} /> Photoshop</div>
+                    <div className="visual-ai__skill-item"><FontAwesomeIcon icon={faPenNib} /> Illustrator</div>
+                    <div className="visual-ai__skill-item"><FontAwesomeIcon icon={faLayerGroup} /> Composición</div>
+                    <div className="visual-ai__skill-item"><FontAwesomeIcon icon={faTag} /> Branding</div>
+                    <div className="visual-ai__skill-item"><FontAwesomeIcon icon={faChartLine} /> Marketing Visual</div>
+                    <div className="visual-ai__skill-item"><FontAwesomeIcon icon={faCamera} /> Fotografía IA</div>
+                    <div className="visual-ai__skill-item"><FontAwesomeIcon icon={faPalette} /> Color</div>
+                </div>
             </header>
+
+            {/* --- SECCIÓN DE GALERÍA (Mapeando el Array de Imports) --- */}
+            <section className="visual-ai__gallery">
+                <div className="visual-ai__header">
+                    <h2 className="visual-ai__title" style={{ fontSize: "clamp(2rem, 2.5vw, 2.5rem)" }}>
+                        <span className="visual-ai__title-black">Colección de</span> <span className="visual-ai__highlight">Diseños</span>
+                    </h2>
+                    <div className="visual-ai__divider"></div>
+                    <p className="visual-ai__subtitle" style={{ marginBottom: "20px" }}>Explora el resto de proyectos generados a través de inteligencia artificial.</p>
+                </div>
+
+                <div className="visual-ai__gallery-masonry">
+                    {/* Iteramos sobre las imágenes importadas */}
+                    {galleryImages.slice(0, visibleCount).map((imgSrc, index) => (
+                        <div key={index} className="visual-ai__gallery-item" onClick={() => handleImageClick(imgSrc)}>
+                            <img
+                                src={imgSrc}
+                                alt={`Diseño Generado ${index + 1}`}
+                                loading="lazy"
+                            />
+                        </div>
+                    ))}
+                </div>
+                
+                <div className="visual-ai__gallery-actions">
+                    <button className="visual-ai__load-more" onClick={handleLoadMore}>
+                        {visibleCount >= galleryImages.length ? 'Ver menos' : 'Ver más'}
+                    </button>
+                </div>
+            </section>
 
             <section className="visual-ai__flow">
                 {/* ... Tarjeta 1 (Entrada) sin cambios ... */}
@@ -121,14 +206,31 @@ const PortfolioDashboard = () => {
 
                     <div className="visual-ai__variations">
                         <div className="visual-ai__thumbnails">
-                            <img src={var1} alt="Variación 1" className="visual-ai__thumbnail visual-ai__thumbnail--elegant" />
-                            <img src={var2} alt="Variación 2" className="visual-ai__thumbnail visual-ai__thumbnail--modern visual-ai__thumbnail--active" />
-                            <img src={var3} alt="Variación 3" className="visual-ai__thumbnail visual-ai__thumbnail--minimal" />
+                            {[var1, var2, var3].map((img, index) => {
+                                // Determine the class based on distance to active
+                                let positionClass = "visual-ai__thumbnail--side";
+                                if (index === activeVariation) {
+                                    positionClass = "visual-ai__thumbnail--active";
+                                }
+                                return (
+                                    <img 
+                                        key={index} 
+                                        src={img} 
+                                        alt={`Variación ${index + 1}`} 
+                                        className={`visual-ai__thumbnail ${positionClass}`} 
+                                        onClick={() => handleVariationClick(index)}
+                                    />
+                                );
+                            })}
                         </div>
                         <div className="visual-ai__indicators">
-                            <span className="visual-ai__dot"></span>
-                            <span className="visual-ai__dot visual-ai__dot--active"></span>
-                            <span className="visual-ai__dot"></span>
+                            {[0, 1, 2].map((index) => (
+                                <span 
+                                    key={index} 
+                                    className={`visual-ai__dot ${index === activeVariation ? 'visual-ai__dot--active' : ''}`}
+                                    onClick={() => handleVariationClick(index)}
+                                ></span>
+                            ))}
                         </div>
                     </div>
                 </article>
@@ -162,57 +264,16 @@ const PortfolioDashboard = () => {
                 </article>
             </section>
 
-            {/* --- SECCIÓN DE GALERÍA (Mapeando el Array de Imports) --- */}
-            <section className="visual-ai__gallery">
-                <div className="visual-ai__header">
-                    <h2 className="visual-ai__title" style={{ fontSize: "clamp(2rem, 2.5vw, 2.5rem)", marginTop: "40px" }}>
-                        <span className="visual-ai__title-black">Colección de</span> <span className="visual-ai__highlight">Diseños</span>
-                    </h2>
-                    <div className="visual-ai__divider"></div>
-                    <p className="visual-ai__subtitle" style={{ marginBottom: "20px" }}>Explora el resto de proyectos generados a través de inteligencia artificial.</p>
-                </div>
+            {/* Galería movida arriba */}
 
-                <div className="visual-ai__gallery-grid">
-                    {/* Iteramos sobre las imágenes importadas */}
-                    {galleryImages.map((imgSrc, index) => (
-                        <div key={index} className="visual-ai__gallery-item">
-                            <img
-                                src={imgSrc}
-                                alt={`Diseño Generado ${index + 1}`}
-                                loading="lazy"
-                            />
-                        </div>
-                    ))}
-                </div>
-            </section>
 
-            {/* ... Footer sin cambios ... */}
-            <section className="visual-ai__footer">
-                <div className="visual-ai__skills">
-                    <div className="visual-ai__skill-item"><FontAwesomeIcon icon={faTerminal} /> Prompt Engineering</div>
-                    <div className="visual-ai__skill-item"><FontAwesomeIcon icon={faBrain} /> Midjourney</div>
-                    <div className="visual-ai__skill-item"><FontAwesomeIcon icon={faBolt} /> Flux</div>
-                    <div className="visual-ai__skill-item"><FontAwesomeIcon icon={faNeos} /> Photoshop</div>
-                    <div className="visual-ai__skill-item"><FontAwesomeIcon icon={faPenNib} /> Illustrator</div>
-                    <div className="visual-ai__skill-item"><FontAwesomeIcon icon={faLayerGroup} /> Composición</div>
-                    <div className="visual-ai__skill-item"><FontAwesomeIcon icon={faTag} /> Branding</div>
-                    <div className="visual-ai__skill-item"><FontAwesomeIcon icon={faChartLine} /> Marketing Visual</div>
-                    <div className="visual-ai__skill-item"><FontAwesomeIcon icon={faCamera} /> Fotografía IA</div>
-                    <div className="visual-ai__skill-item"><FontAwesomeIcon icon={faPalette} /> Color</div>
-                </div>
 
-                <div className="visual-ai__actions">
-                    <div className="visual-ai__message">
-                        <FontAwesomeIcon icon={faUser} className="visual-ai__user-icon" />
-                        <p>La <span className="visual-ai__highlight">creatividad</span> humana dirige el proceso. La <span className="visual-ai__highlight">inteligencia artificial</span> <span className="visual-ai__highlight">multiplica</span> las posibilidades.</p>
-                    </div>
-
-                    <div className="visual-ai__cta">
-                        <span className="visual-ai__cta-question">¿Tienes una idea?</span>
-                        <span className="visual-ai__cta-action">Convirtámosla en una identidad visual.</span>
-                    </div>
+            {selectedImage && (
+                <div className="visual-ai__modal" onClick={closeModal}>
+                    <button className="visual-ai__modal-close" onClick={closeModal}>&times;</button>
+                    <img src={selectedImage} alt="Vista ampliada" className="visual-ai__modal-img" onClick={(e) => e.stopPropagation()} />
                 </div>
-            </section>
+            )}
         </div>
     );
 };
