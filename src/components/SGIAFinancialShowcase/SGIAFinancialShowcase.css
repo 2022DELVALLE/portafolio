@@ -1,0 +1,382 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+
+/* =========================================
+   BLOCK: sfs (SGIA Financial Showcase)
+   ========================================= */
+.sfs {
+    --color-sfs-accent: #FF6600;
+    --color-sfs-accent-alt: #FF7A1A;
+    --color-sfs-bg-card: #F9F9F9;
+    --color-sfs-border: #EFEFEF;
+    --color-sfs-text-muted: #999999;
+    --color-sfs-badge-bg: #FFF2EA;
+    --color-sfs-badge-border: #FFE5D3;
+    --font-mono: 'IBM Plex Mono', monospace;
+
+    background: var(--color-bg);
+    color: var(--color-text-main);
+    padding: 88px 24px 96px;
+    font-family: var(--font-body);
+}
+
+.sfs * {
+    box-sizing: border-box;
+}
+
+.sfs__wrap {
+    max-width: 1120px;
+    margin: 0 auto;
+}
+
+.sfs__eyebrow {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--color-sfs-accent);
+    margin: 0 0 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.sfs__eyebrow::before {
+    content: "";
+    width: 22px;
+    height: 1px;
+    background: var(--color-sfs-accent);
+    display: inline-block;
+}
+
+/* =========================================
+   HEADER & TOGGLE
+   ========================================= */
+.sfs__head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 32px;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+}
+
+.sfs__title {
+    font-family: var(--font-title);
+    font-size: clamp(26px, 3.4vw, 38px);
+    line-height: 1.15;
+    font-weight: 600;
+    margin: 0 0 12px;
+    max-width: 600px;
+    color: var(--color-text-main);
+}
+
+.sfs__lede {
+    font-size: 14.5px;
+    line-height: 1.6;
+    color: var(--color-text-sec);
+    max-width: 520px;
+    margin: 0 0 24px;
+}
+
+.sfs__toggle-group {
+    display: inline-flex;
+    background: var(--color-sfs-border);
+    padding: 4px;
+    border-radius: 6px;
+    gap: 4px;
+}
+
+.sfs__toggle-btn {
+    background: transparent;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--color-text-sec);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.sfs__toggle-btn:hover {
+    color: var(--color-text-main);
+}
+
+.sfs__toggle-btn--active {
+    background: #FFFFFF;
+    color: var(--color-text-main);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+/* =========================================
+   VIEW: MODELO FINANCIERO (VISTA 1)
+   ========================================= */
+.sfs__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--color-sfs-accent);
+    border: 1px solid var(--color-sfs-badge-border);
+    background: var(--color-sfs-badge-bg);
+    padding: 8px 14px;
+    border-radius: 3px;
+    white-space: nowrap;
+    margin-bottom: 24px;
+}
+.sfs__badge::before {
+    content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--color-sfs-accent); flex-shrink: 0;
+}
+
+.sfs__tabs {
+    display: flex;
+    gap: 2px;
+    border-bottom: 1px solid var(--color-sfs-border);
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+.sfs__tabs::-webkit-scrollbar { display: none; }
+
+.sfs__tab {
+    background: transparent;
+    border: none;
+    color: var(--color-text-sec);
+    font-family: var(--font-mono);
+    font-size: 12px;
+    padding: 14px 20px;
+    cursor: pointer;
+    white-space: nowrap;
+    position: relative;
+    transition: color 150ms ease;
+}
+.sfs__tab:hover { color: var(--color-text-main); }
+.sfs__tab--active { color: var(--color-text-main); }
+.sfs__tab--active::after {
+    content: ""; position: absolute; left: 0; right: 0; bottom: -1px; height: 2px; background: var(--color-sfs-accent);
+}
+
+.sfs__panel {
+    border: 1px solid var(--color-sfs-border);
+    border-top: none;
+    padding: 32px;
+}
+.sfs__panel-top { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; flex-wrap: wrap; margin-bottom: 14px; }
+.sfs__sheet-name { font-family: var(--font-title); font-size: 20px; font-weight: 600; margin: 0; color: var(--color-text-main); }
+.sfs__sheet-rows { font-family: var(--font-mono); font-size: 11px; color: var(--color-sfs-text-muted); }
+.sfs__sheet-desc { font-size: 14px; line-height: 1.65; color: var(--color-text-sec); max-width: 640px; margin: 0 0 24px; }
+
+.sfs__sample-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1px;
+    background: var(--color-sfs-border); border: 1px solid var(--color-sfs-border);
+}
+.sfs__sample-cell { background: var(--color-sfs-bg-card); padding: 16px 18px; }
+.sfs__sample-label { font-size: 11.5px; color: var(--color-text-sec); margin-bottom: 6px; }
+.sfs__sample-value { font-family: var(--font-mono); font-size: 17px; font-weight: 600; color: var(--color-sfs-accent); }
+
+.sfs__watermark-note { margin-top: 20px; font-size: 11.5px; color: var(--color-sfs-text-muted); font-family: var(--font-mono); display: flex; align-items: center; gap: 8px; }
+
+.sfs__cta-row { display: flex; gap: 12px; margin-top: 32px; flex-wrap: wrap; }
+.sfs__btn { font-family: var(--font-mono); font-size: 12.5px; padding: 13px 22px; border-radius: 3px; cursor: pointer; border: 1px solid transparent; transition: all 150ms ease; display: inline-flex; align-items: center; gap: 8px; text-decoration: none;}
+.sfs__btn--primary { background: var(--color-sfs-accent); color: #FFFFFF; }
+.sfs__btn--primary:hover { background: var(--color-sfs-accent-alt); }
+.sfs__btn--ghost { background: transparent; border-color: var(--color-sfs-border); color: var(--color-text-sec); }
+.sfs__btn--ghost:hover { border-color: var(--color-sfs-accent); color: var(--color-text-main); }
+
+.sfs__embed-wrap { margin-top: 28px; border: 1px solid var(--color-sfs-border); background: var(--color-sfs-bg-card); }
+.sfs__embed-head { display: flex; justify-content: space-between; padding: 12px 16px; border-bottom: 1px solid var(--color-sfs-border); font-family: var(--font-mono); font-size: 11px; color: var(--color-text-sec); flex-wrap: wrap; gap: 8px; }
+.sfs__embed-frame { position: relative; width: 100%; height: 560px; background: var(--color-sfs-bg-card); }
+.sfs__embed-frame iframe { width: 100%; height: 100%; border: none; display: block; }
+.sfs__embed-shield { position: absolute; inset: 0; pointer-events: none; }
+
+/* =========================================
+   VIEW: PRINCIPIOS FINANCIEROS (VISTA 2)
+   ========================================= */
+.sfs__principles {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.sfs__principle {
+    border: 1px solid var(--color-sfs-border);
+    padding: 32px;
+    border-radius: 8px;
+    background: #FFFFFF;
+}
+
+.sfs__principle-head {
+    margin-bottom: 24px;
+}
+
+.sfs__principle-num {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--color-sfs-accent);
+    margin-bottom: 8px;
+    display: block;
+}
+
+.sfs__principle-title {
+    font-family: var(--font-title);
+    font-size: 22px;
+    margin: 0 0 12px;
+    color: var(--color-text-main);
+}
+
+.sfs__principle-kicker {
+    font-size: 15px;
+    color: var(--color-text-sec);
+    margin: 0;
+    max-width: 600px;
+    line-height: 1.5;
+}
+
+.sfs__interactive-area {
+    background: var(--color-sfs-bg-card);
+    border: 1px solid var(--color-sfs-border);
+    border-radius: 6px;
+    padding: 24px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.sfs__controls {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+}
+
+.sfs__control-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex: 1;
+    min-width: 200px;
+}
+
+.sfs__control-label {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--color-text-sec);
+    display: flex;
+    justify-content: space-between;
+}
+
+.sfs__slider {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 4px;
+    background: #E0E0E0;
+    border-radius: 2px;
+    outline: none;
+}
+.sfs__slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--color-sfs-accent);
+    cursor: pointer;
+    transition: transform 0.1s;
+}
+.sfs__slider::-webkit-slider-thumb:hover {
+    transform: scale(1.2);
+}
+
+.sfs__chart-container {
+    width: 100%;
+    height: 280px;
+}
+
+.sfs__principle-conclusion {
+    font-size: 14px;
+    color: var(--color-text-main);
+    line-height: 1.6;
+    padding-left: 16px;
+    border-left: 2px solid var(--color-sfs-accent);
+    margin: 0;
+    background: var(--color-sfs-badge-bg);
+    padding: 12px 16px;
+    border-radius: 0 4px 4px 0;
+}
+
+/* Custom interactive sub-components */
+.sfs__balance-visual {
+    display: flex;
+    height: 120px;
+    border-radius: 6px;
+    overflow: hidden;
+    color: #FFF;
+    font-family: var(--font-mono);
+    font-size: 13px;
+    text-align: center;
+}
+.sfs__balance-col {
+    display: flex;
+    flex-direction: column;
+}
+.sfs__balance-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: height 0.3s ease, width 0.3s ease;
+    padding: 8px;
+}
+
+.sfs__statements-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+}
+.sfs__statement-card {
+    background: #FFF;
+    border: 1px solid var(--color-sfs-border);
+    border-radius: 4px;
+    padding: 16px;
+}
+.sfs__statement-title {
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 12px;
+    border-bottom: 1px solid var(--color-sfs-border);
+    padding-bottom: 8px;
+}
+.sfs__statement-row {
+    display: flex;
+    justify-content: space-between;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    margin-bottom: 8px;
+    color: var(--color-text-sec);
+}
+.sfs__statement-row.changed {
+    color: var(--color-sfs-accent);
+    font-weight: 600;
+}
+
+/* =========================================
+   RESPONSIVE
+   ========================================= */
+@media (max-width: 768px) {
+    .sfs__head { flex-direction: column; align-items: flex-start; gap: 24px; }
+    .sfs__panel { padding: 22px 16px; }
+    .sfs__sample-grid { grid-template-columns: 1fr 1fr; }
+    .sfs__cta-row { flex-direction: column; }
+    .sfs__btn { width: 100%; justify-content: center; }
+    .sfs__principle { padding: 20px 16px; }
+    .sfs__statements-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 480px) {
+    .sfs { padding: 64px 16px 64px; }
+    .sfs__title { font-size: 22px; }
+    .sfs__sample-grid { grid-template-columns: 1fr; }
+    .sfs__embed-frame { height: 400px; }
+    .sfs__controls { flex-direction: column; gap: 16px; }
+}

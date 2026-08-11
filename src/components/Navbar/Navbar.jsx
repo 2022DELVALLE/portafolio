@@ -12,8 +12,7 @@ const routes = [
     { path: '/ventures', label: 'Ventures' },
     { path: '/estrategia', label: 'Ver la estrategia' },
     { path: '/visual-ia', label: 'Visual IA' },
-    { path: '/case-study', label: 'Case Study' },
-    { path: '/modelo-financiero', label: 'Modelo Fin.' },
+    { path: '/modelo-financiero', label: 'Finanzas' },
 ];
 
 

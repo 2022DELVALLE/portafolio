@@ -29,39 +29,60 @@ import './visual_ai.css';
 // ==========================================
 // 1. IMPORTACIÓN DE IMÁGENES PRINCIPALES
 // ==========================================
-import finalFlyerImage from '../../assets/visualaiimages/visualaiimage_05.jpg';
-import var1 from '../../assets/visualaiimages/visualaiimage_06.jpg';
-import var2 from '../../assets/visualaiimages/visualaiimage_03.jpg';
-import var3 from '../../assets/visualaiimages/visualaiimage_04.jpg';
+import finalFlyerImage from '../../assets/visualaiimages/Flayer Restaurante  Daylo.png';
+import var1 from '../../assets/visualaiimages/Flayer Restaurnate Daylo V2.png';
+import var2 from '../../assets/visualaiimages/Flayer Restaurante EL Rey.jpg';
+import var3 from '../../assets/visualaiimages/Flayer Restaurante el Rey.png';
 
 // ==========================================
-// 2. IMPORTACIÓN DE IMÁGENES DE LA GALERÍA (15)
+// 2. IMPORTACIÓN DE IMÁGENES DE LA GALERÍA
 // ==========================================
-import img1 from '../../assets/visualaiimages/visualaiimage_02.jpg';
-import img2 from '../../assets/visualaiimages/visualaiimage_02.jpg';
-import img3 from '../../assets/visualaiimages/visualaiimage_03.jpg';
-import img4 from '../../assets/visualaiimages/visualaiimage_04.jpg';
-import img5 from '../../assets/visualaiimages/visualaiimage_05.jpg';
-import img6 from '../../assets/visualaiimages/visualaiimage_06.jpg';
-import img7 from '../../assets/visualaiimages/visualaiimage_07.jpg';
-import img8 from '../../assets/visualaiimages/visualaiimage_08.jpg';
-import img9 from '../../assets/visualaiimages/visualaiimage_09.jpg';
-import img10 from '../../assets/visualaiimages/visualaiimage_10.jpg';
-import img11 from '../../assets/visualaiimages/visualaiimage_11.jpg';
-import img12 from '../../assets/visualaiimages/visualaiimage_12.jpg';
-import img13 from '../../assets/visualaiimages/visualaiimage_13.jpg';
-import img14 from '../../assets/visualaiimages/visualaiimage_14.jpg';
-import img15 from '../../assets/visualaiimages/visualaiimage_15.jpg';
+import img1 from '../../assets/visualaiimages/Flayer  Zapatillas Mike.png';
+import img2 from '../../assets/visualaiimages/Flayer Hotel Los POortales V2.jpg';
+import img3 from '../../assets/visualaiimages/Flayer Hotel Los Portales.jpg';
+import img4 from '../../assets/visualaiimages/Flayer Restaurante  Daylo.png';
+import img5 from '../../assets/visualaiimages/Flayer Restaurante EL Rey.jpg';
+import img6 from '../../assets/visualaiimages/Flayer Restaurante el Rey.png';
+import img7 from '../../assets/visualaiimages/Flayer Restaurnate Daylo V2.png';
+import img8 from '../../assets/visualaiimages/Flayer Zapatillas Venta.jpg';
+import img9 from '../../assets/visualaiimages/Flayer Zapatos Venta (2).jpg';
+import img10 from '../../assets/visualaiimages/Flayer Zapatos Venta.jpg';
+import img11 from '../../assets/visualaiimages/Fotografia Dayana .jpg';
+import img12 from '../../assets/visualaiimages/Fotografia Dayana v2.jpg';
+import img13 from '../../assets/visualaiimages/Fotografia Dayana v3.jpg';
+import img14 from '../../assets/visualaiimages/Fotografia Flor.jpeg';
+import img15 from '../../assets/visualaiimages/Fotografia Flro v2.jpeg';
+import img16 from '../../assets/visualaiimages/Fotografia Hombre v2.png';
+import img17 from '../../assets/visualaiimages/Fotografia Hombre.png';
+import img18 from '../../assets/visualaiimages/Fotografia Kenyo v2.jpg';
+import img19 from '../../assets/visualaiimages/Fotografia Kenyo.jpeg';
+import img20 from '../../assets/visualaiimages/Fotografia Kenyo.png';
+import img21 from '../../assets/visualaiimages/Fotografia Mujer.png';
 
 // Arreglo para mapear fácilmente la galería
 const galleryImages = [
-    img1, img2, img3, img4, img5, img6, img7, img8, img9, img10, img11, img12, img13, img14, img15
+    img1, img2, img3, img4, img5, img6, img7, img8, img9, img10, 
+    img11, img12, img13, img14, img15, img16, img17, img18, img19, img20, img21
 ];
 
 const PortfolioDashboard = () => {
     const [visibleCount, setVisibleCount] = useState(10);
     const [selectedImage, setSelectedImage] = useState(null);
     const [activeVariation, setActiveVariation] = useState(1);
+    const [shuffledImages, setShuffledImages] = useState(galleryImages);
+
+    useEffect(() => {
+        // Función para ordenar aleatoriamente (algoritmo Fisher-Yates)
+        const shuffleArray = (array) => {
+            const newArray = [...array];
+            for (let i = newArray.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [newArray[i], newArray[j]] = [newArray[j], newArray[i]];
+            }
+            return newArray;
+        };
+        setShuffledImages(shuffleArray(galleryImages));
+    }, []);
 
     const handleLoadMore = () => {
         if (visibleCount >= galleryImages.length) {
@@ -141,8 +162,8 @@ const PortfolioDashboard = () => {
                 </div>
 
                 <div className="visual-ai__gallery-masonry">
-                    {/* Iteramos sobre las imágenes importadas */}
-                    {galleryImages.slice(0, visibleCount).map((imgSrc, index) => (
+                    {/* Iteramos sobre las imágenes mezcladas */}
+                    {shuffledImages.slice(0, visibleCount).map((imgSrc, index) => (
                         <div key={index} className="visual-ai__gallery-item" onClick={() => handleImageClick(imgSrc)}>
                             <img
                                 src={imgSrc}
@@ -200,7 +221,7 @@ const PortfolioDashboard = () => {
                         <div className="visual-ai__step-badge">02</div>
                         <div className="visual-ai__step-title">
                             <h4>Proceso IA</h4>
-                            <span>Generación de visualaiimage_11</span>
+                            <span>Generación de variaciones</span>
                         </div>
                     </div>
 

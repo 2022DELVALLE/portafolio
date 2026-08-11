@@ -5,8 +5,7 @@ import Hero from './components/Hero/Hero';
 import VenturePipeline from './components/VenturePipeline/VenturePipeline';
 import VerLaEstrategia from './components/Verlaestrategia/Ver_la_estrategia';
 import Portada from './components/VisualAI/visual_ai';
-import FinancialCaseStudy from './components/FinancialCaseStudy/FinancialCaseStudy';
-import FinancialModelViewer from './components/FinancialModelViewer/FinancialModelViewer';
+import SGIAFinancialShowcase from './components/SGIAFinancialShowcase/SGIAFinancialShowcase';
 import Certificates from './components/Certificates/Certificates';
 
 function App() {
@@ -21,8 +20,7 @@ function App() {
           <Route path="/estrategia" element={<VerLaEstrategia />} />
           <Route path="/arquitectura" element={<VerLaEstrategia />} />
           <Route path="/visual-ia" element={<Portada />} />
-          <Route path="/case-study" element={<FinancialCaseStudy />} />
-          <Route path="/modelo-financiero" element={<FinancialModelViewer />} />
+          <Route path="/modelo-financiero" element={<SGIAFinancialShowcase />} />
           <Route path="/certificados" element={<Certificates />} />
         </Routes>
       </div>
