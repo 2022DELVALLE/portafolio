@@ -416,6 +416,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+
     .fmv__tab,
     .fmv__btn {
         transition: none;

@@ -7,13 +7,13 @@ import {
 
 import Hero from './components/Hero/Hero';
 import VenturePipeline from './components/VenturePipeline/VenturePipeline';
-import SystemsArchitecture from './components/SystemsArchitecture/SystemsArchitecture';
-import Portada from './components/Portada/PortfolioDashboard';
+import VerLaEstrategia from '../components/Verlaestrategia/Ver_la_estrategia';
+import Portada from '../components/Portada/PortfolioDashboard';
 
 const routes = [
   { path: '/home', component: <Hero />, label: 'Inicio' },
   { path: '/ventures', component: <VenturePipeline />, label: 'Ventures' },
-  { path: '/arquitectura', component: <SystemsArchitecture />, label: 'Arquitectura' },
+  { path: '/estrategia', component: <VerLaEstrategia />, label: 'Estrategia' },
   { path: '/portafolio', component: <Portada />, label: 'Portafolio' },
 ];
 
@@ -22,7 +22,8 @@ const AppRoutes = () => {
     <Routes>
       <Route path="/home" element={<Hero />} />
       <Route path="/ventures" element={<VenturePipeline />} />
-      <Route path="/arquitectura" element={<SystemsArchitecture />} />
+      <Route path="/estrategia" element={<VerLaEstrategia />} />
+      <Route path="/arquitectura" element={<VerLaEstrategia />} />
       <Route path="/portafolio" element={<Portada />} />
     </Routes>
   );

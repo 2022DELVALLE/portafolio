@@ -10,7 +10,7 @@ const routes = [
     { path: '/home', label: 'Inicio' },
     { path: '/certificados', label: 'Certificados' },
     { path: '/ventures', label: 'Ventures' },
-    { path: '/arquitectura', label: 'Arquitectura' },
+    { path: '/estrategia', label: 'Ver la estrategia' },
     { path: '/visual-ia', label: 'Visual IA' },
     { path: '/case-study', label: 'Case Study' },
     { path: '/modelo-financiero', label: 'Modelo Fin.' },
