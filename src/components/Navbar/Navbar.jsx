@@ -9,10 +9,10 @@ import miFoto from '../../assets/images/fotoperfil.png';
 const routes = [
     { path: '/home', label: 'Inicio' },
     { path: '/certificados', label: 'Certificados' },
-    // { path: '/ventures', label: 'Ventures' },
+    //{ path: '/ventures', label: 'Ventures' },
     { path: '/estrategia', label: 'Ver la estrategia' },
     { path: '/visual-ia', label: 'Visual IA' },
-    // { path: '/modelo-financiero', label: 'Finanzas' },
+    { path: '/modelo-financiero', label: 'Finanzas' },
 ];
 
 
